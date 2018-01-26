@@ -10,8 +10,8 @@
   attribute vec4 vPosition;
   void main() 
   {
+     gl_PointSize = 5.0;
      gl_Position = vPosition;
-     gl_PointSize = 3.0;
   }
   </script>
   <script id="Cone-fragment-shader" type="x-shader/x-fragment">
@@ -25,6 +25,6 @@
   
 </head>
 <body>
-  <canvas id="webgl-canvas" width="512" height="512" style="background-color: #4286f4"></canvas>
+  <canvas id="webgl-canvas" width="512" height="512" style="background-color: #252ab2"></canvas>
 </body>
 </html>
