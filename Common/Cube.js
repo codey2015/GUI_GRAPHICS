@@ -65,7 +65,29 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     }
     */
     
-
+    pyramidVertexColorBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexColorBuffer);
+    var colors = [
+        // Front face
+        1.0, 0.0, 0.0, 1.0,
+        0.0, 1.0, 0.0, 1.0,
+        0.0, 0.0, 1.0, 1.0,
+        // Right face
+        1.0, 0.0, 0.0, 1.0,
+        0.0, 0.0, 1.0, 1.0,
+        0.0, 1.0, 0.0, 1.0,
+        // Back face
+        1.0, 0.0, 0.0, 1.0,
+        0.0, 1.0, 0.0, 1.0,
+        0.0, 0.0, 1.0, 1.0,
+        // Left face
+        1.0, 0.0, 0.0, 1.0,
+        0.0, 0.0, 1.0, 1.0,
+        0.0, 1.0, 0.0, 1.0
+    ];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+    pyramidVertexColorBuffer.itemSize = 4;
+    pyramidVertexColorBuffer.numItems = 12;
     
     this.positions.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
@@ -75,9 +97,9 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
     gl.bufferData( gl.ELEMENT_ARRAY_BUFFER, this.indices.values, gl.STATIC_DRAW );
 
-    const colorBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+    //const colorBuffer = gl.createBuffer();
+    //gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+    //gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
     
     
     this.positions.attributeLoc = gl.getAttribLocation( this.program, "vPosition" );
