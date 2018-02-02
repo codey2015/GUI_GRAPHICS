@@ -47,7 +47,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     };
     this.indices.count = this.indices.values.length;
 
-    
+    /*
     const faceColors = [
     [1.0,  1.0,  1.0,  1.0],    // Front face: white
     [1.0,  0.0,  0.0,  1.0],    // Back face: red
@@ -63,7 +63,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     const c = faceColors[j];
     colors = colors.concat(c, c, c, c);
     }
-    
+    */
     
 
     
