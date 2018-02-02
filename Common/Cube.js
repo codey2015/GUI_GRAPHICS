@@ -98,7 +98,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
  
         gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
 	    
-	    gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, colorBuffer );
+	    gl.bindBuffer( gl.ARRAY_BUFFER, colorBuffer );
 
         gl.uniformMatrix4fv( MVLoc, gl.FALSE, flatten(this.MV) );
 
