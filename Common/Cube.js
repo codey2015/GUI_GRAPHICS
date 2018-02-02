@@ -49,7 +49,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     };
     this.indices.count = this.indices.values.length;
 
-    /*
+    
     const faceColors = [
     [1.0,  1.0,  1.0,  1.0],    // Front face: white
     [1.0,  0.0,  0.0,  1.0],    // Back face: red
@@ -65,29 +65,8 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     const c = faceColors[j];
     colors = colors.concat(c, c, c, c);
     }
-    */
     
-cubeVertexColorBuffer=gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER,cubeVertexColorBuffer);
-	var colors=[
-			[1.0, 0.0, 0.0, 1.0], // Front face
-            [1.0, 1.0, 0.0, 1.0], // Back face
-            [0.0, 1.0, 0.0, 1.0], // Top face
-            [1.0, 0.5, 0.5, 1.0], // Bottom face
-            [1.0, 0.0, 1.0, 1.0], // Right face
-            [0.0, 0.0, 1.0, 1.0]  // Left face
-	];
-	var unpackedColors=[];
-	for (var i in colors) {
-		var color=colors[i];
-		for(var j=0;j<4 ; j++)
-		{
-			unpackedColors=unpackedColors.concat(color);
-		}
-	}
-	gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(unpackedColors),gl.STATIC_DRAW);
-	cubeVertexColorBuffer.itemSize=4;
-	cubeVertexColorBuffer.numItems=24;
+    
     
     this.positions.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
@@ -97,9 +76,9 @@ cubeVertexColorBuffer=gl.createBuffer();
     gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
     gl.bufferData( gl.ELEMENT_ARRAY_BUFFER, this.indices.values, gl.STATIC_DRAW );
 
-    //const colorBuffer = gl.createBuffer();
-    //gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-    //gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+    const colorBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
     
     
     this.positions.attributeLoc = gl.getAttribLocation( this.program, "vPosition" );
