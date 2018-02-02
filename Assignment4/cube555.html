@@ -24,13 +24,13 @@ void main()
 </script>
 
 <script id="Cube-fragment-shader" type="x-shader/x-fragment">
-precision highp float;
-uniform vec4  color;
+//precision highp float;
+//uniform vec4  color;
 
 void main()
 {
-    //gl_FragColor = vec4(1.0, 0.0, gl_FrontFacing ? 1.0 : 0.0, 1.0);
-    gl_FragColor = color
+    gl_FragColor = vec4(1.0, 0.0, gl_FrontFacing ? 1.0 : 0.0, 1.0);
+    //gl_FragColor = color
 }
 </script>
 </head>
