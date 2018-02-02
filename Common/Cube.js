@@ -34,7 +34,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     
     this.indices = { 
         values : new Uint16Array([
-            0, 1, 2,
+                        0, 1, 2,
 			1, 3, 2, 
 			2, 3, 7,
 			2, 7, 6,
@@ -45,7 +45,8 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 			6, 7, 4,
 			4, 7, 5,
 			4, 5, 0,
-			5, 1, 0,        ])
+			5, 1, 0,        
+	])
     };
     this.indices.count = this.indices.values.length;
 
@@ -59,7 +60,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     [1.0,  0.0,  1.0,  1.0],    // Left face: purple
   ];
     
-     var colors = [];
+    var colors = [];
     
     for (var j = 0; j < faceColors.length; ++j) {
     const c = faceColors[j];
@@ -96,6 +97,8 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             gl.FLOAT, gl.FALSE, 0, 0 );
  
         gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
+	    
+	    gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, colorBuffer );
 
         gl.uniformMatrix4fv( MVLoc, gl.FALSE, flatten(this.MV) );
 
