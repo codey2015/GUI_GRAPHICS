@@ -79,7 +79,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 
 	
 	
-    var colors = [0,0,1, 1,0,0, 0,1,0, 1,0,1,];
+    //var colors = [0,0,1, 1,0,0, 0,1,0, 1,0,1,];
 
 	
     //var colorBuffer = gl.createBuffer();
