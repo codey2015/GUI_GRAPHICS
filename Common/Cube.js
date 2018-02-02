@@ -6,6 +6,8 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     //
     var vertShdr = vertexShaderId || "Cube-vertex-shader";
     var fragShdr = fragmentShaderId || "Cube-fragment-shader";
+    var cubeVertexColorBuffer;
+
 
     this.program = initShaders(gl, vertShdr, fragShdr);
 
