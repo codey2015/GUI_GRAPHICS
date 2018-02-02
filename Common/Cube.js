@@ -51,7 +51,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     this.indices.count = this.indices.values.length;
 
     
-    const faceColors = [
+    var faceColors = [
     [1.0,  1.0,  1.0,  1.0],    // Front face: white
     [1.0,  0.0,  0.0,  1.0],    // Back face: red
     [0.0,  1.0,  0.0,  1.0],    // Top face: green
@@ -63,7 +63,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     var colors = [];
     
     for (var j = 0; j < faceColors.length; ++j) {
-    const c = faceColors[j];
+    var c = faceColors[j];
     colors = colors.concat(c, c, c, c);
     }
     
