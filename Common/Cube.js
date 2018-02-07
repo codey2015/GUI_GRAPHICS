@@ -6,7 +6,6 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     //
     var vertShdr = vertexShaderId || "Cube-vertex-shader";
     var fragShdr = fragmentShaderId || "Cube-fragment-shader";
-    //var cubeVertexColorBuffer;
 
 
     this.program = initShaders(gl, vertShdr, fragShdr);
@@ -31,7 +30,17 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             ]),
         numComponents : 3
     };
-    
+        this.colors = {
+        values : new Float32Array([
+            1.0, 0.0, 0.0, 
+            1.0, 0.0, 0.0,
+            1.0, 0.0, 0.0,
+            1.0, 0.0, 0.0
+        ]),
+        numComponents : 3 
+    };
+	
+	
     this.indices = { 
         values : new Uint16Array([
                         0, 1, 2,
@@ -50,24 +59,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     };
     this.indices.count = this.indices.values.length;
 
-    /*
-    var faceColors = [
-    [1.0,  1.0,  1.0,  1.0],    // Front face: white
-    [1.0,  0.0,  0.0,  1.0],    // Back face: red
-    [0.0,  1.0,  0.0,  1.0],    // Top face: green
-    [0.0,  0.0,  1.0,  1.0],    // Bottom face: blue
-    [1.0,  1.0,  0.0,  1.0],    // Right face: yellow
-    [1.0,  0.0,  1.0,  1.0],    // Left face: purple
-  ];
     
-    var colors = [];
-    
-    for (var j = 0; j < faceColors.length; ++j) {
-    var c = faceColors[j];
-    colors = colors.concat(c, c, c, c);
-    }
-    
-    */
     
     this.positions.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
@@ -104,6 +96,6 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 	    
         gl.uniformMatrix4fv( MVLoc, gl.FALSE, flatten(this.MV) );
         // Draw the cube's base
-        gl.drawElements( gl.TRIANGLES, this.indices.count, gl.UNSIGNED_SHORT, 0 );
+	gl.drawElements(gl.TRIANGLES, this.indices.values.length, gl.UNSIGNED_SHORT, 0);
     }
 };
