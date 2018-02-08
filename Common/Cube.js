@@ -42,16 +42,16 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 	   0.5, -0.5, 0.5,//Right, Down, Forward//BACK FACE
 	   0.5, 0.5, 0.5,//Right, Up, Forward//BACK FACE
 		
-		//TOP FACE
-		//TOP FACE
-		//TOP FACE
-		//TOP FACE
+		0.5, 0.5, 0.5,//Right, Up, Forward//TOP FACE
+		-0.5, 0.5, 0.5,//Left, Up, Forward//TOP FACE
+		-0.5, 0.5, -0.5,//Left, Up, Back//TOP FACE
+		0.5, 0.5, -0.5,//Right, Up, Back//TOP FACE
 		
 		
-				//FRONT FACE
-				//FRONT FACE
-				//FRONT FACE
-				//FRONT FACE
+				0.5, 0.5, -0.5,//Right, Up, Back//FRONT FACE
+				0.5, -0.5, -0.5,//Right, Down, Back//FRONT FACE
+				-0.5, -0.5, -0.5,//Left, Down, Back//FRONT FACE
+				-0.5, 0.5, -0.5//Left, Up, Back//FRONT FACE
 
 
             ]),
