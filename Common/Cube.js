@@ -21,23 +21,23 @@ function Cube( vertexShaderId, fragmentShaderId ) {
         values : new Float32Array([
            0.5, 0.5, 0.5, //vertex0 Right, Up, Forward   //RIGHT FACE
 	   0.5, 0.5, -0.5, //vertex1 Right, Up, Back //RIGHT FACE
-		   // Right, Down, Back //RIGHT FACE
-		//Right, Down, Forward //RIGHT FACE
+	   0.5, -0.5, -0.5,   // Right, Down, Back //RIGHT FACE
+	   0.5, -0.5, 0.5,//Right, Down, Forward //RIGHT FACE
 		
 		
 		   0.5, -0.5, 0.5, //vertex2 Right, Down, Forward //BOTTOM FACE
 		   0.5, -0.5, -0.5, //vertex3 Right, Down, Back //BOTTOM FACE
-					//Left, Down, Back //BOTTOM FACE
-					//Left, Down, Forward //BOTTOM FACE	
+		  -0.5, -0.5, -0.5,//Left, Down, Back //BOTTOM FACE
+		  -0.5, -0.5, 0.5, //Left, Down, Forward //BOTTOM FACE	
 		
 		
 		   -0.5, -0.5, 0.5, //vertex6 Left, Down, Forward //LEFT FACE
 		   -0.5, -0.5, -0.5, //vertex7 Left, Down, Back //LEFT FACE
-				     //Left, Up, Back //LEFT FACE
-				    //Left, Up, Forward //LEFT FACE
+		   -0.5, 0.5, -0.5,  //Left, Up, Back //LEFT FACE
+		   -0.5, 0.5, 0.5,   //Left, Up, Forward //LEFT FACE
 		
 		
-		//Left, Up, Forward //BACK FACE
+		-0.5, 0.5, 0.5, //Left, Up, Forward //BACK FACE
 		//Left, Down, Forward//BACK FACE
 		//Right, Down, Forward//BACK FACE
 		//Right, Up, Forward//BACK FACE
@@ -53,8 +53,8 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 				//FRONT FACE
 				//FRONT FACE
 
-		   -0.5, 0.5, 0.5, //vertex4 Left, Up, Forward
-		   -0.5, 0.5, -0.5, //vertex5 Left, Up, Back
+		   //vertex4 Left, Up, Forward
+		    //vertex5 Left, Up, Back
 		
 		
 
