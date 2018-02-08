@@ -24,7 +24,7 @@ function init() {
 function render() {
   gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
 
-  angle += 5.0; // degrees
+  angle += 2.0; // degrees
 
   cube.MV = rotate( angle, [1, 1, 0] );
   //mat4.rotate(modelViewMatrix, modelViewMatrix, cubeRotation * .7, [0, 1, 0]);
