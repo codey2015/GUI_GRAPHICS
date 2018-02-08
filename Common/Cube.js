@@ -25,22 +25,22 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 	   0.5, -0.5, 0.5,//Right, Down, Forward //RIGHT FACE
 		
 		
-		   0.5, -0.5, 0.5, //vertex2 Right, Down, Forward //BOTTOM FACE
-		   0.5, -0.5, -0.5, //vertex3 Right, Down, Back //BOTTOM FACE
-		  -0.5, -0.5, -0.5,//Left, Down, Back //BOTTOM FACE
-		  -0.5, -0.5, 0.5, //Left, Down, Forward //BOTTOM FACE	
+	   0.5, -0.5, 0.5, //vertex2 Right, Down, Forward //BOTTOM FACE
+	   0.5, -0.5, -0.5, //vertex3 Right, Down, Back //BOTTOM FACE
+	  -0.5, -0.5, -0.5,//Left, Down, Back //BOTTOM FACE
+	  -0.5, -0.5, 0.5, //Left, Down, Forward //BOTTOM FACE	
 		
 		
-		   -0.5, -0.5, 0.5, //vertex6 Left, Down, Forward //LEFT FACE
-		   -0.5, -0.5, -0.5, //vertex7 Left, Down, Back //LEFT FACE
-		   -0.5, 0.5, -0.5,  //Left, Up, Back //LEFT FACE
-		   -0.5, 0.5, 0.5,   //Left, Up, Forward //LEFT FACE
+	  -0.5, -0.5, 0.5, //vertex6 Left, Down, Forward //LEFT FACE
+	  -0.5, -0.5, -0.5, //vertex7 Left, Down, Back //LEFT FACE
+	  -0.5, 0.5, -0.5,  //Left, Up, Back //LEFT FACE
+	  -0.5, 0.5, 0.5,   //Left, Up, Forward //LEFT FACE
 		
 		
-		-0.5, 0.5, 0.5, //Left, Up, Forward //BACK FACE
-		-0.5, -0.5, 0.5,//Left, Down, Forward//BACK FACE
-		0.5, -0.5, 0.5,//Right, Down, Forward//BACK FACE
-		0.5, 0.5, 0.5,//Right, Up, Forward//BACK FACE
+	  -0.5, 0.5, 0.5, //Left, Up, Forward //BACK FACE
+	  -0.5, -0.5, 0.5,//Left, Down, Forward//BACK FACE
+	   0.5, -0.5, 0.5,//Right, Down, Forward//BACK FACE
+	   0.5, 0.5, 0.5,//Right, Up, Forward//BACK FACE
 		
 		//TOP FACE
 		//TOP FACE
@@ -53,10 +53,6 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 				//FRONT FACE
 				//FRONT FACE
 
-		   //vertex4 Left, Up, Forward
-		    //vertex5 Left, Up, Back
-		
-		
 
             ]),
         numComponents : 3
