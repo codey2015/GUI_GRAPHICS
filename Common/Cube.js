@@ -19,22 +19,11 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 
     this.positions = { 
         values : new Float32Array([
-           0.5, 0.5, 0.5, //vertex0 Right, Up, Forward   //RIGHT FACE
-	   0.5, 0.5, -0.5, //vertex1 Right, Up, Back //RIGHT FACE
-	   0.5, -0.5, -0.5,   // Right, Down, Back //RIGHT FACE
-	   0.5, -0.5, 0.5,//Right, Down, Forward //RIGHT FACE
 		
-		
-	   0.5, -0.5, 0.5, //vertex2 Right, Down, Forward //BOTTOM FACE
-	   0.5, -0.5, -0.5, //vertex3 Right, Down, Back //BOTTOM FACE
-	  -0.5, -0.5, -0.5,//Left, Down, Back //BOTTOM FACE
-	  -0.5, -0.5, 0.5, //Left, Down, Forward //BOTTOM FACE	
-		
-		
-	  -0.5, -0.5, 0.5, //vertex6 Left, Down, Forward //LEFT FACE
-	  -0.5, -0.5, -0.5, //vertex7 Left, Down, Back //LEFT FACE
-	  -0.5, 0.5, -0.5,  //Left, Up, Back //LEFT FACE
-	  -0.5, 0.5, 0.5,   //Left, Up, Forward //LEFT FACE
+	   0.5, 0.5, -0.5,//Right, Up, Back//FRONT FACE
+           0.5, -0.5, -0.5,//Right, Down, Back//FRONT FACE
+	  -0.5, -0.5, -0.5,//Left, Down, Back//FRONT FACE
+	  -0.5, 0.5, -0.5,//Left, Up, Back//FRONT FACE
 		
 		
 	  -0.5, 0.5, 0.5, //Left, Up, Forward //BACK FACE
@@ -42,16 +31,28 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 	   0.5, -0.5, 0.5,//Right, Down, Forward//BACK FACE
 	   0.5, 0.5, 0.5,//Right, Up, Forward//BACK FACE
 		
-	   0.5, 0.5, 0.5,//Right, Up, Forward//TOP FACE
+		
+           0.5, 0.5, 0.5,//Right, Up, Forward//TOP FACE
 	  -0.5, 0.5, 0.5,//Left, Up, Forward//TOP FACE
 	  -0.5, 0.5, -0.5,//Left, Up, Back//TOP FACE
 	   0.5, 0.5, -0.5,//Right, Up, Back//TOP FACE
 		
+	   0.5, -0.5, 0.5, //Right, Down, Forward //BOTTOM FACE
+	   0.5, -0.5, -0.5, //Right, Down, Back //BOTTOM FACE
+	  -0.5, -0.5, -0.5,//Left, Down, Back //BOTTOM FACE
+	  -0.5, -0.5, 0.5, //Left, Down, Forward //BOTTOM FACE	
 		
-	   0.5, 0.5, -0.5,//Right, Up, Back//FRONT FACE
-           0.5, -0.5, -0.5,//Right, Down, Back//FRONT FACE
-	  -0.5, -0.5, -0.5,//Left, Down, Back//FRONT FACE
-	  -0.5, 0.5, -0.5,//Left, Up, Back//FRONT FACE
+	  -0.5, -0.5, 0.5, //Left, Down, Forward //LEFT FACE
+	  -0.5, -0.5, -0.5, // Left, Down, Back //LEFT FACE
+	  -0.5, 0.5, -0.5,  //Left, Up, Back //LEFT FACE
+	  -0.5, 0.5, 0.5,   //Left, Up, Forward //LEFT FACE
+		
+           0.5, 0.5, 0.5, //Right, Up, Forward   //RIGHT FACE
+	   0.5, 0.5, -0.5, // Right, Up, Back //RIGHT FACE
+	   0.5, -0.5, -0.5,   // Right, Down, Back //RIGHT FACE
+	   0.5, -0.5, 0.5//Right, Down, Forward //RIGHT FACE
+		
+
 
 
             ]),
@@ -82,18 +83,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 			5,3,7,
 			6,0,2,
 			6,2,4,
-		8,9,10,
-		10,9,11,
-		10,11,12,
-		12,11,13,
-		12,13,14,
-		13,15,14,
-		15,8,14,
-		15,9,8,
-		11,9,15,
-		13,11,15,
-		14,8,10,
-		14,10,12
+
         ])
     };
     this.indices.count = this.indices.values.length;
