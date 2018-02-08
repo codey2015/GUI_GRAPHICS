@@ -19,18 +19,18 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 
     this.positions = { 
         values : new Float32Array([
+	  -0.5, 0.5, 0.5, //Left, Up, Forward //FRONT FACE
+	  -0.5, -0.5, 0.5,//Left, Down, Forward//FRONT FACE
+	   0.5, -0.5, 0.5,//Right, Down, Forward//FRONT FACE
+	   0.5, 0.5, 0.5,//Right, Up, Forward//FRONT FACE
 		
-	   0.5, 0.5, -0.5,//Right, Up, Back//FRONT FACE
-           0.5, -0.5, -0.5,//Right, Down, Back//FRONT FACE
-	  -0.5, -0.5, -0.5,//Left, Down, Back//FRONT FACE
-	  -0.5, 0.5, -0.5,//Left, Up, Back//FRONT FACE
 		
 		
-	  -0.5, 0.5, 0.5, //Left, Up, Forward //BACK FACE
-	  -0.5, -0.5, 0.5,//Left, Down, Forward//BACK FACE
-	   0.5, -0.5, 0.5,//Right, Down, Forward//BACK FACE
-	   0.5, 0.5, 0.5,//Right, Up, Forward//BACK FACE
-		
+	   0.5, 0.5, -0.5,//Right, Up, Back//BACK FACE
+           0.5, -0.5, -0.5,//Right, Down, Back//BACK FACE
+	  -0.5, -0.5, -0.5,//Left, Down, Back//BACK FACE
+	  -0.5, 0.5, -0.5,//Left, Up, Back//BACK FACE
+
 		
            0.5, 0.5, 0.5,//Right, Up, Forward//TOP FACE
 	  -0.5, 0.5, 0.5,//Left, Up, Forward//TOP FACE
