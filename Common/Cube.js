@@ -42,15 +42,17 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 	  -0.5, -0.5, -0.5,//Left, Down, Back //BOTTOM FACE
 	  -0.5, -0.5, 0.5, //Left, Down, Forward //BOTTOM FACE	
 		
-	  -0.5, -0.5, 0.5, //Left, Down, Forward //LEFT FACE
-	  -0.5, -0.5, -0.5, // Left, Down, Back //LEFT FACE
-	  -0.5, 0.5, -0.5,  //Left, Up, Back //LEFT FACE
-	  -0.5, 0.5, 0.5,   //Left, Up, Forward //LEFT FACE
-		
            0.5, 0.5, 0.5, //Right, Up, Forward   //RIGHT FACE
 	   0.5, 0.5, -0.5, // Right, Up, Back //RIGHT FACE
 	   0.5, -0.5, -0.5,   // Right, Down, Back //RIGHT FACE
-	   0.5, -0.5, 0.5//Right, Down, Forward //RIGHT FACE
+	   0.5, -0.5, 0.5,//Right, Down, Forward //RIGHT FACE
+		
+	  -0.5, -0.5, 0.5, //Left, Down, Forward //LEFT FACE
+	  -0.5, -0.5, -0.5, // Left, Down, Back //LEFT FACE
+	  -0.5, 0.5, -0.5,  //Left, Up, Back //LEFT FACE
+	  -0.5, 0.5, 0.5   //Left, Up, Forward //LEFT FACE
+		
+
 		
 
 
@@ -101,12 +103,12 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 	
  this.indices = { 
         values : new Uint16Array([
-        0,  2,  1,      0,  3,  2,    // front
-    	4,  6,  5,      4,  7,  6,    // back
-    	8,  10,  9,     8,  11, 10,   // top
-    	12, 14, 13,     12, 15, 14,   // bottom
-    	16, 18, 17,     16, 19, 18,   // right
-    	20, 22, 21,     20, 23, 22   // left
+        0,  2,  1,      0,  3,  2,    // FRONT FACE
+    	4,  6,  5,      4,  7,  6,    // BACK FACE
+    	8,  10,  9,     8,  11, 10,   // TOP FACE
+    	12, 14, 13,     12, 15, 14,   //BOTTOM FACE
+    	16, 18, 17,     16, 19, 18,   // RIGHT FACE
+    	20, 22, 21,     20, 23, 22   // LEFT FACE
         ])
     };
     this.indices.count = this.indices.values.length;
