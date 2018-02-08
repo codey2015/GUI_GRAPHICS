@@ -30,13 +30,17 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 					//Left, Down, Back //BOTTOM FACE
 					//Left, Down, Forward //BOTTOM FACE	
 		
+		
 		   -0.5, -0.5, 0.5, //vertex6 Left, Down, Forward //LEFT FACE
 		   -0.5, -0.5, -0.5, //vertex7 Left, Down, Back //LEFT FACE
-								
-		//BACK FACE
-		//BACK FACE
-		//BACK FACE
-		//BACK FACE
+				     //Left, Up, Back //LEFT FACE
+				    //Left, Up, Forward //LEFT FACE
+		
+		
+		//Left, Up, Forward //BACK FACE
+		//Left, Down, Forward//BACK FACE
+		//Right, Down, Forward//BACK FACE
+		//Right, Up, Forward//BACK FACE
 		
 		//TOP FACE
 		//TOP FACE
