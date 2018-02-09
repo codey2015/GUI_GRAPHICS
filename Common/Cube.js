@@ -84,10 +84,10 @@ function Cube( vertexShaderId, fragmentShaderId ) {
    		0.3,  0.8,  0.0,
   
   		// LEFT FACE
-   		0.5,  0.0, 0.2,
-   		0.5,  0.0, 0.2,
-   		0.5,  0.0, 0.2,
-   		0.5,  0.0, 0.2
+   		0.2,  0.8, 0.2,
+   		0.2,  0.8, 0.2,
+   		0.2,  0.8, 0.2,
+   		0.2,  0.8, 0.2
         ]),
         numComponents : 3 
     };
