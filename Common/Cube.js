@@ -111,11 +111,11 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
     gl.bufferData( gl.ARRAY_BUFFER, this.positions.values, gl.STATIC_DRAW );
 	
-    this.colors.buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, this.colors.buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, this.colors.values, gl.STATIC_DRAW);
-    this.colors.attributeLoc = gl.getAttribLocation( this.program, "vColor");
-    gl.enableVertexAttribArray( this.colors.attributeLoc);
+    //this.colors.buffer = gl.createBuffer();
+    //gl.bindBuffer(gl.ARRAY_BUFFER, this.colors.buffer);
+    //gl.bufferData(gl.ARRAY_BUFFER, this.colors.values, gl.STATIC_DRAW);
+    //this.colors.attributeLoc = gl.getAttribLocation( this.program, "vColor");
+   // gl.enableVertexAttribArray( this.colors.attributeLoc);
 	
     this.indices.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
