@@ -135,6 +135,9 @@ function Cube( vertexShaderId, fragmentShaderId ) {
         gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
         gl.vertexAttribPointer( this.positions.attributeLoc, this.positions.numComponents, gl.FLOAT, gl.FALSE, 0, 0 );
  
+	 gl.bindBuffer( gl.ARRAY_BUFFER, this.colors.buffer );
+    	gl.vertexAttribPointer( this.colors.attributeLoc, this.colors.numComponents, gl.FLOAT, gl.FALSE, 0, 0 );
+	    
         gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
 	    
         gl.uniformMatrix4fv( MVLoc, gl.FALSE, flatten(this.MV) );
