@@ -19,44 +19,35 @@ function Cube( vertexShaderId, fragmentShaderId ) {
 
     this.positions = { 
         values : new Float32Array([
-	  -0.5, 0.5, 0.5, //Left, Up, Forward //FRONT FACE
 	  -0.5, -0.5, 0.5,//Left, Down, Forward//FRONT FACE
 	   0.5, -0.5, 0.5,//Right, Down, Forward//FRONT FACE
 	   0.5, 0.5, 0.5,//Right, Up, Forward//FRONT FACE
-		
-		
-		
-	   0.5, 0.5, -0.5,//Right, Up, Back//BACK FACE
-           0.5, -0.5, -0.5,//Right, Down, Back//BACK FACE
+	  -0.5, 0.5, 0.5, //Left, Up, Forward //FRONT FACE
+	   
 	  -0.5, -0.5, -0.5,//Left, Down, Back//BACK FACE
 	  -0.5, 0.5, -0.5,//Left, Up, Back//BACK FACE
-
-		
-           0.5, 0.5, 0.5,//Right, Up, Forward//TOP FACE
-	  -0.5, 0.5, 0.5,//Left, Up, Forward//TOP FACE
+	   0.5, 0.5, -0.5,//Right, Up, Back//BACK FACE
+           0.5, -0.5, -0.5,//Right, Down, Back//BACK FACE
+	  
 	  -0.5, 0.5, -0.5,//Left, Up, Back//TOP FACE
+	  -0.5, 0.5, 0.5,//Left, Up, Forward//TOP FACE
+           0.5, 0.5, 0.5,//Right, Up, Forward//TOP FACE
 	   0.5, 0.5, -0.5,//Right, Up, Back//TOP FACE
-		
-	   0.5, -0.5, 0.5, //Right, Down, Forward //BOTTOM FACE
-	   0.5, -0.5, -0.5, //Right, Down, Back //BOTTOM FACE
+	
 	  -0.5, -0.5, -0.5,//Left, Down, Back //BOTTOM FACE
+	   0.5, -0.5, -0.5, //Right, Down, Back //BOTTOM FACE
+	   0.5, -0.5, 0.5, //Right, Down, Forward //BOTTOM FACE
 	  -0.5, -0.5, 0.5, //Left, Down, Forward //BOTTOM FACE	
 		
-           0.5, 0.5, 0.5, //Right, Up, Forward   //RIGHT FACE
+           0.5, -0.5, -0.5,  // Right, Down, Back //RIGHT FACE
 	   0.5, 0.5, -0.5, // Right, Up, Back //RIGHT FACE
-	   0.5, -0.5, -0.5,   // Right, Down, Back //RIGHT FACE
+	   0.5, 0.5, 0.5, //Right, Up, Forward   //RIGHT FACE
 	   0.5, -0.5, 0.5,//Right, Down, Forward //RIGHT FACE
 		
-	  -0.5, -0.5, 0.5, //Left, Down, Forward //LEFT FACE
 	  -0.5, -0.5, -0.5, // Left, Down, Back //LEFT FACE
-	  -0.5, 0.5, -0.5,  //Left, Up, Back //LEFT FACE
-	  -0.5, 0.5, 0.5   //Left, Up, Forward //LEFT FACE
-		
-
-		
-
-
-
+	  -0.5, -0.5, 0.5, //Left, Down, Forward //LEFT FACE
+	  -0.5, 0.5, 0.5,   //Left, Up, Forward //LEFT FACE
+	  -0.5, 0.5, -0.5  //Left, Up, Back //LEFT FACE
             ]),
         numComponents : 3
     };
