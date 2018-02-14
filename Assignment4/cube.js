@@ -4,6 +4,7 @@ var gl = undefined;
 var angle = 0;
 
 function init() {
+  
   var canvas = document.getElementById( "webgl-canvas" );
 
   gl = WebGLUtils.setupWebGL( canvas );
@@ -19,6 +20,11 @@ function init() {
   cube = new Cube();
 
   render();
+  
+  document.getElementById("xButton").onclick = function()
+  {
+    rotationAxis = xAxis;   
+  }
 }
 
 function render() {
