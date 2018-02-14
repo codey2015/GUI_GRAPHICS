@@ -23,7 +23,8 @@ function init() {
   
   document.getElementById("xButton").onclick = function()
   {
-    rotationAxis = xAxis;   
+   //rotationAxis = xAxis;   
+    consol.log("You pressed a button");
   }
 }
 
