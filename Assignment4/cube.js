@@ -28,7 +28,7 @@ function init() {
   }
   document.getElementById("slider").onchange = function()
   {   
-    speed = 100 - event.srcElement.value;    
+    //speed = 100 - event.srcElement.value;    
     console.log("You pressed moved the slider");
 
   };
