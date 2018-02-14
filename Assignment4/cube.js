@@ -32,6 +32,16 @@ function init() {
     console.log("You moved the slider");
 
   };
+  
+  canvas.onkeypress = function()
+  {   
+    switch( event.KeyBoard.Key ) 
+    {        
+      //case 'f' : speed += 10; break;        
+      //case 's' : speed -= 10; break;     
+        case 's' : console.log("You pressed the s key");
+    } 
+  };
 }
 
 function render() {
