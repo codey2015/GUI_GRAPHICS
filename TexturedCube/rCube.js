@@ -270,9 +270,9 @@ function Cube(gl, vertexShaderId, fragmentShaderId) {
 handleLoadedTexture = function (image, texture) {
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    //image = texture.image;
+    image = texture.image;
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-    //if (isPowerOf2(image.width) && isPowerOf2(image.height)) 
+    if (isPowerOf2(image.width) && isPowerOf2(image.height)) 
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
