@@ -1,4 +1,6 @@
 "use strict";
+var mixedTextures = 0; // 1 to have 6 different images (one per face of the cube)
+
 
 function Sphere( slices, stacks, vertexShader, fragmentShader ) { 
     var i, j;  // loop counters
@@ -108,6 +110,17 @@ function Sphere( slices, stacks, vertexShader, fragmentShader ) {
         location: gl.getAttribLocation(program, "vPosition")
     };
 
+    
+    this.initTexture = function () {
+        texture = gl.createTexture();
+        texImage = new Image();
+        texImage.onload = function () {
+            handleLoadedTexture (texImage, texture);
+        }
+        if(mixedTextures == 0)
+            texImage.src = "mars.jpg";
+            
+    }
     gl.bindBuffer(gl.ARRAY_BUFFER, vPosition.buffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions),
         gl.STATIC_DRAW);
@@ -122,6 +135,38 @@ function Sphere( slices, stacks, vertexShader, fragmentShader ) {
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices),
         gl.STATIC_DRAW);
 
+    
+        this.initTexture();
+    
+    this.textures.buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.textures.buffer);
+    gl.bufferData( gl.ARRAY_BUFFER, this.textures.values, gl.STATIC_DRAW );
+    this.textures.attributeLoc = gl.getAttribLocation( this.program, "aTextureCoord" );
+	gl.enableVertexAttribArray(this.textures.attributeLoc);
+    
+    this.uniforms = {
+	  MV : undefined,
+	  P : undefined,
+	  uSampler: gl.getUniformLocation(this.program, 'uSampler'),
+	  sampler : undefined
+	};
+
+	this.uniforms.MV = gl.getUniformLocation(this.program, "MV");
+	this.uniforms.P = gl.getUniformLocation(this.program, "P");
+	this.uniforms.sampler = gl.getUniformLocation(this.program, "uSampler");
+    
+    
+  	this.MV = mat4(); // or undefined
+  	this.P = mat4();
+  	this.sampler = undefined;
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.textures.buffer);
+            gl.vertexAttribPointer(this.textures.attributeLoc, this.textures.numComponents, gl.FLOAT, gl.FALSE, 0, 0);
+     gl.uniformMatrix4fv( this.uniforms.MV, gl.FALSE, flatten(this.MV) );
+		    gl.uniformMatrix4fv( this.uniforms.P, gl.FALSE, flatten(this.P) );
+		    
+	        gl.activeTexture(gl.TEXTURE0);
+            gl.bindTexture(gl.TEXTURE_2D, texture);
+		    gl.uniform1i(this.uniforms.uSampler, 0);
     // Initialize our externally viewable variables
     this.PointMode = false;
     this.program = program;
@@ -143,3 +188,21 @@ function Sphere( slices, stacks, vertexShader, fragmentShader ) {
         }
     };
 };
+handleLoadedTexture = function (image, texture) {
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    //image = texture.image;
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+    //if (isPowerOf2(image.width) && isPowerOf2(image.height)) 
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.generateMipmap(gl.TEXTURE_2D);
+    gl.bindTexture(gl.TEXTURE_2D, null);
+}
+
+
+function isPowerOf2(value) {
+  return (value & (value - 1)) == 0;
+}
