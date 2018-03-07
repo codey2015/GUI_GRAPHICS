@@ -10,10 +10,10 @@
 	<body>
 		<script src="../Common/three.js"></script>
 		<script>
-var WIDTH = 640,
-	HEIGHT = 360;
+var WIDTH = 1920,
+	HEIGHT = 1080;
  
-var FOV = 75,
+var FOV = 60,
 	ASPECT = WIDTH / HEIGHT,
 	NEAR = 0.1,
 	FAR = 2000;
@@ -28,19 +28,39 @@ renderer.setSize(WIDTH, HEIGHT);
 document.body.appendChild(renderer.domElement);
  
 var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+var material = new THREE.MeshBasicMaterial({ color:  0x932f7b});
+var geometry2 = new THREE.BoxGeometry(1, 1, 1);
+var material2 = new THREE.MeshBasicMaterial({ color: 0x2f9acf });
+var geometry3 = new THREE.BoxGeometry(1, 1, 1);
+var material3 = new THREE.MeshBasicMaterial({ color: 0xbe2626 });
 var cube = new THREE.Mesh(geometry, material);
-scene.add( cube );
- 
+var cube2 = new THREE.Mesh(geometry2, material2);;
+var cube3 = new THREE.Mesh(geometry3, material3);;
+
+scene.add(cube);
+scene.add(cube2);
+scene.add(cube3);
+
 var animate = function() {
 	requestAnimationFrame(animate);
  
-	cube.rotation.x += 0.1;
-	cube.rotation.y += 0.1;
- 
+	cube.rotation.x += 0.01;
+	cube.rotation.y += 0.01;
+	cube.position.z -= .02;
+	cube.position.y += 0.01;
+	cube2.rotation.x += 0.01;
+	cube2.rotation.y += 0.01;
+	cube2.position.x += .01;
+	cube2.position.z -= .01;
+	cube3.rotation.x += 0.01;
+	cube3.rotation.y += 0.01;
+	cube3.position.x -= .01;
+	cube3.position.z -= .01;
+
 	renderer.render(scene, camera);
 };
  
 animate();		</script>
 	</body>
 </html>
+
