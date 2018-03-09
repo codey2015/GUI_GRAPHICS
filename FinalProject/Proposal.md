@@ -5,3 +5,4 @@ Week 2: Code the four colors onto the screen.
 Week 3: Add user input/interactability.
 Week 4: Program the algorithm to generate random color flashes that the player must press.
 Week 5(Stretch goal): Add audio.
+I will create a web-based application using THREE.js.
