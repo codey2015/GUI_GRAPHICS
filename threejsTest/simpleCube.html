@@ -9,6 +9,7 @@
 	</head>
 	<body>
 		<script src="../Common/three.js"></script>
+		<script src="../Common/THREEx.KeyboardState.js"></script>
 		<script>
 var WIDTH = 1920,
 	HEIGHT = 1080;
@@ -20,7 +21,8 @@ var FOV = 60,
  
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(FOV, ASPECT, NEAR, FAR);
- 
+var keyboard = new THREEx.KeyboardState();
+
 camera.position.z = 5;
  
 var renderer = new THREE.WebGLRenderer();
@@ -44,6 +46,9 @@ scene.add(cube3);
 var animate = function() {
 	requestAnimationFrame(animate);
  
+	if( keyboard.pressed("a") ) 
+		cube.rotation.x += 10.01;
+		
 	cube.rotation.x += 0.01;
 	cube.rotation.y += 0.01;
 	cube.position.z -= .02;
@@ -63,4 +68,6 @@ var animate = function() {
 animate();		</script>
 	</body>
 </html>
+
+
 
