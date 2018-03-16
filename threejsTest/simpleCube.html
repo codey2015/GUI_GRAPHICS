@@ -39,8 +39,7 @@ var cube = new THREE.Mesh(geometry, material);
 var cube2 = new THREE.Mesh(geometry2, material2);;
 var cube3 = new THREE.Mesh(geometry3, material3);;
 
-firstBB = new THREE.Box3().setFromObject(cube);
-secondBB = new THREE.Box3().setFromObject(cube2);
+
 
 scene.add(cube);
 scene.add(cube2);
@@ -52,6 +51,8 @@ scene.add(cube3);
 cube2.position.x = 4;
 var animate = function() {
 	requestAnimationFrame(animate);
+	firstBB = new THREE.Box3().setFromObject(cube);
+	secondBB = new THREE.Box3().setFromObject(cube2);
 	var collision = firstBB.intersectsBox(secondBB);
 
 	if( keyboard.pressed("w") ) 
@@ -89,4 +90,5 @@ var animate = function() {
 animate();		</script>
 	</body>
 </html>
+
 
