@@ -46,9 +46,16 @@ scene.add(cube3);
 var animate = function() {
 	requestAnimationFrame(animate);
  
+	if( keyboard.pressed("w") ) 
+		cube.position.y += 0.1;
 	if( keyboard.pressed("a") ) 
-		cube.rotation.x += 10.01;
+		cube.position.x -= 0.1;
+	if( keyboard.pressed("s") ) 
+		cube.position.y -= 0.1;
+	if( keyboard.pressed("d") ) 
+		cube.position.x += 0.1;
 		
+				
 	cube.rotation.x += 0.01;
 	cube.rotation.y += 0.01;
 	cube.position.z -= .02;
@@ -68,6 +75,5 @@ var animate = function() {
 animate();		</script>
 	</body>
 </html>
-
 
 
