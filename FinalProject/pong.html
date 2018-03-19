@@ -12,9 +12,9 @@
 		<script src="../Common/THREEx.KeyboardState.js"></script>
 		<script>
 var WIDTH = 1920,
-	HEIGHT = 1080;
+	HEIGHT = 920;
  
-var FOV = 60,
+var FOV = 100,
 	ASPECT = WIDTH / HEIGHT,
 	NEAR = 0.1,
 	FAR = 2000;
@@ -29,51 +29,84 @@ renderer.setSize(WIDTH, HEIGHT);
 document.body.appendChild(renderer.domElement);
  
 var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshBasicMaterial({ color:  0x932f7b});
+var material = new THREE.MeshBasicMaterial({ color: 0xbe2626});
 var geometry2 = new THREE.BoxGeometry(1, 1, 1);
 var material2 = new THREE.MeshBasicMaterial({ color: 0x2f9acf });
-var geometry3 = new THREE.BoxGeometry(1, 1, 1);
-var material3 = new THREE.MeshBasicMaterial({ color: 0xbe2626 });
-var cube = new THREE.Mesh(geometry, material);
-var cube2 = new THREE.Mesh(geometry2, material2);;
-var cube3 = new THREE.Mesh(geometry3, material3);;
-scene.add(cube);
-scene.add(cube2);
-scene.add(cube3);
-cube2.position.x = 4;
-cube.position.x = -5;
+var geometry3 = new THREE.BoxGeometry(25, 1, 1);
+var material3 = new THREE.MeshBasicMaterial({ color: 0x932f7b }); 
+
+var player1 = new THREE.Mesh(geometry, material);
+var player2 = new THREE.Mesh(geometry2, material2);;
+var topBarrier = new THREE.Mesh(geometry3, material3);;
+var bottomBarrier = new THREE.Mesh(geometry3, material3);;
+
+scene.add(player1);
+scene.add(player2);
+scene.add(topBarrier);
+scene.add(bottomBarrier);
+
+
+var geometry = new THREE.SphereGeometry(.2, 7, 7);
+var material = new THREE.MeshBasicMaterial({ color: 0xcacccd });
+var ball = new THREE.Mesh(geometry, material);
+scene.add(ball);
+
+
+player1.position.x = -10;
+player2.position.x = 10;
+topBarrier.position.y = 6;
+bottomBarrier.position.y = -6;
 var animate = function() {
-	requestAnimationFrame(animate);
-	firstBB = new THREE.Box3().setFromObject(cube);
-	secondBB = new THREE.Box3().setFromObject(cube2);
-	var collision = firstBB.intersectsBox(secondBB);
-	if( keyboard.pressed("w") ) 
-		cube.position.y += 0.1;
-	if( keyboard.pressed("a") ) 
-		//cube.position.x -= 0.1;
-	if( keyboard.pressed("s") ) 
-		cube.position.y -= 0.1;
-	if( keyboard.pressed("d") ) 
-		//cube.position.x += 0.1;
-	firstBB.position = cube.position;
-	secondBB.position = cube2.position;
+    requestAnimationFrame(animate);
+
+    firstBB = new THREE.Box3().setFromObject(player1);
+    secondBB = new THREE.Box3().setFromObject(player2);
+    topCol = new THREE.Box3().setFromObject(topBarrier);
+    bottomCol = new THREE.Box3().setFromObject(bottomBarrier);
+
+            var collision = firstBB.intersectsBox(secondBB);
+            var topCollisionP1 = firstBB.intersectsBox(topCol);
+            var topCollisionP2 = secondBB.intersectsBox(topCol);
+            var bottomCollisionP1 = firstBB.intersectsBox(bottomCol);
+            var bottomCollisionP2 = secondBB.intersectsBox(bottomCol);
+
+            if (keyboard.pressed("w")) {
+                player1.position.y += 0.2;
+            }
+
+            if (keyboard.pressed("s")) {
+                player1.position.y -= 0.2;
+            }
+
+            if (keyboard.pressed('down')) {
+                player2.position.y -= 0.2;
+            }
+
+            if (keyboard.pressed('up')) {
+                player2.position.y += 0.2;
+            }
+    firstBB.position = player1.position;
+    secondBB.position = player2.position;
 	
 	if(collision){
-		cube2.rotation.z +=.4;
+        player2.rotation.z +=.4;
 		console.log("Collision detected.");
-	}
-	//cube.rotation.x += 0.01;
-	//cube.rotation.y += 0.01;
-	//cube.position.z -= .02;
-	//cube.position.y += 0.01;
-	cube2.rotation.x += 0.01;
-	cube2.rotation.y += 0.01;
-	//cube2.position.x += .01;
-	//cube2.position.z -= .01;
-	cube3.rotation.x += 0.01;
-	cube3.rotation.y += 0.01;
-	cube3.position.x -= .01;
-	cube3.position.z -= .01;
+    }
+
+            if (topCollisionP1) {
+                player1.position.y -= .2;
+            }
+            if (topCollisionP2) {
+                player2.position.y -= .2;
+            }
+            if (bottomCollisionP1) {
+                player1.position.y += .2;
+            }
+            if (bottomCollisionP2) {
+                player2.position.y += .2;
+            }
+
+
 	renderer.render(scene, camera);
 };
  
