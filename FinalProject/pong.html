@@ -12,7 +12,7 @@
 		<script src="../Common/THREEx.KeyboardState.js"></script>
 		<script>
 var WIDTH = 1920,
-	HEIGHT = 920;
+	HEIGHT = 875;
  
 var FOV = 100,
 	ASPECT = WIDTH / HEIGHT,
@@ -46,9 +46,9 @@ scene.add(topBarrier);
 scene.add(bottomBarrier);
 
 
-var geometry = new THREE.SphereGeometry(.2, 7, 7);
+var geometryBall = new THREE.SphereGeometry(.2, 7, 7);
 var material = new THREE.MeshBasicMaterial({ color: 0xcacccd });
-var ball = new THREE.Mesh(geometry, material);
+var ball = new THREE.Mesh(geometryBall, material);
 scene.add(ball);
 
 
@@ -56,6 +56,13 @@ player1.position.x = -10;
 player2.position.x = 10;
 topBarrier.position.y = 6;
 bottomBarrier.position.y = -6;
+
+            var checkP1 = false;
+            var checkP2 = false;
+            var startGame = false;
+            var startedGame = false;
+            var ballSpeed = .1;
+            var ballDirX = 1, ballDirY = 1;
 var animate = function() {
     requestAnimationFrame(animate);
 
@@ -63,12 +70,17 @@ var animate = function() {
     secondBB = new THREE.Box3().setFromObject(player2);
     topCol = new THREE.Box3().setFromObject(topBarrier);
     bottomCol = new THREE.Box3().setFromObject(bottomBarrier);
+    ballCol = new THREE.Box3().setFromObject(ball);
+
+    
 
             var collision = firstBB.intersectsBox(secondBB);
             var topCollisionP1 = firstBB.intersectsBox(topCol);
             var topCollisionP2 = secondBB.intersectsBox(topCol);
             var bottomCollisionP1 = firstBB.intersectsBox(bottomCol);
             var bottomCollisionP2 = secondBB.intersectsBox(bottomCol);
+            var ballCollisionP1 = firstBB.intersectsBox(ballCol);
+            var ballCollisionP2 = secondBB.intersectsBox(ballCol);
 
             if (keyboard.pressed("w")) {
                 player1.position.y += 0.2;
@@ -89,9 +101,22 @@ var animate = function() {
     secondBB.position = player2.position;
 	
 	if(collision){
-        player2.rotation.z +=.4;
+        //player2.rotation.z +=.4;
 		console.log("Collision detected.");
     }
+
+            if (keyboard.pressed('space') && startedGame == false) {
+                startedGame = true;
+                startGame = true
+            }
+
+            if (startGame == true) {
+                ball.position.x -= .2;
+            }
+
+            if (keyboard.pressed('0')) {
+                ballSpeed = 1.5;
+            }
 
             if (topCollisionP1) {
                 player1.position.y -= .2;
@@ -106,6 +131,25 @@ var animate = function() {
                 player2.position.y += .2;
             }
 
+
+            if (ballCollisionP1) {
+                checkP1 = true;
+                checkP2 = false;
+                startGame = false;
+            }
+
+            if (checkP1 == true) {
+                ball.position.x += ballSpeed * ballDirX;
+            }
+
+            if (ballCollisionP2) {
+                checkP2 = true;
+                checkP1 = false;
+            }
+
+            if (checkP2 == true) {
+                ball.position.x -= ballSpeed;
+            }
 
 	renderer.render(scene, camera);
 };
