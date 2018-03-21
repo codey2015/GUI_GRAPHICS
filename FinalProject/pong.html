@@ -34,7 +34,7 @@ var geometry2 = new THREE.BoxGeometry(.5, 1.75, .5);
 var material2 = new THREE.MeshBasicMaterial({ color: 0x2f9acf });
             var geometry3 = new THREE.BoxGeometry(25, 1, 1);
             var material3 = new THREE.MeshBasicMaterial({ color: 0x932f7b }); 
-            var geometry4 = new THREE.BoxGeometry(.2, 10, .2);
+            var geometry4 = new THREE.BoxGeometry(.2, 10.10, .2);
             var material4 = new THREE.MeshBasicMaterial({ color: 0xcacccd }); 
 var player1 = new THREE.Mesh(geometry, material);
 var player2 = new THREE.Mesh(geometry2, material2);
@@ -155,11 +155,15 @@ rightGoal.position.x = 12;
 			var checkBottomCol = false;
             var startGame = false;
             var startedGame = false;
+            var p1Lose = false;
+            var p2Lose = false;
+            var firstStart = true;
             var ballSpeed = .1;
             var ballDirX = 1
 			var ballDirY = 1;
             var difficulty = 1;
-
+            var orginalSpeed = ballSpeed + .05;
+            var temp = Math.random();
 
 var animate = function() {
     requestAnimationFrame(animate);
@@ -188,7 +192,7 @@ var animate = function() {
 			if(keyboard.pressed("r")){
 			ball.position.x = 0;
 			ball.position.y = 0;
-			ballSpeed = .15;
+			ballSpeed = orginalSpeed;
 			}
 			if(keyboard.pressed("h")){ // add difficulty
 				difficulty +=.05;
@@ -217,7 +221,22 @@ var animate = function() {
 				text2.innerHTML = "";
             }
             if (startGame == true) {
-                ball.position.x -= .2;
+                if (p1Lose == true) {
+                    ball.position.x -= .2;
+                }
+                if (p2Lose == true) {
+                    ball.position.x += .2;
+                }
+
+                if (firstStart == true) {
+                    if (temp > 0.5) {
+                        ball.position.x += .2;
+                    }
+                    if (temp < 0.5) {
+                        ball.position.x -= .2;
+                    }
+                }
+
             }
             if (keyboard.pressed('0')) {
                 ballSpeed = 1.5;
@@ -239,7 +258,10 @@ var animate = function() {
                 checkP2 = false;
                 startGame = false;
 				checkTopCol = false;
-				checkBottomCol = false;
+                checkBottomCol = false;
+                p1Lose = false;
+                p2Lose = false;
+                firstStart = false;
 				ballSpeed+=.015;
 				ballDirY = Math.random() * difficulty;//random direction each time
             }
@@ -257,7 +279,11 @@ var animate = function() {
                 checkP2 = true;
                 checkP1 = false;
 				checkTopCol = false;
-				checkBottomCol = false;
+                checkBottomCol = false;
+                p1Lose = false;
+                p2Lose = false;
+                firstStart = false;
+
 				ballDirY = Math.random() *difficulty;//random direction each time
             }
             if (checkP2 == true) { //while the ball is being hit by player 2
@@ -291,6 +317,7 @@ var animate = function() {
                 P2Score += 1;
                 ball.position.x = 0;
                 ball.position.y = 0;
+                p1Lose = true;
                 startGame = false;
                 startedGame = false;
                 checkP1 = false;
@@ -298,9 +325,9 @@ var animate = function() {
                 checkTopCol = false;
                 checkBottomCol = false;
                 player2score.innerHTML = P2Score;
-                text2.innerHTML = "Press Space";
-                text2.style.left = (WIDTH / 2.1) + 'px';
-
+                text2.innerHTML = "Red press Space";
+                //text2.style.left = (WIDTH / 2.1) + 'px';
+                ballSpeed = orginalSpeed;
             }
 
 
@@ -308,6 +335,7 @@ var animate = function() {
                 P1Score += 1;
                 ball.position.x = 0;
                 ball.position.y = 0;
+                p2Lose = true;
                 startGame = false;
                 startedGame = false;
                 checkP1 = false;
@@ -315,9 +343,9 @@ var animate = function() {
                 checkTopCol = false;
                 checkBottomCol = false;
                 player1score.innerHTML = P1Score;
-                text2.innerHTML = "Press Space";
-                text2.style.left = (WIDTH / 2.1) + 'px';
-
+                text2.innerHTML = "Blue press Space";
+                //text2.style.left = (WIDTH / 2.1) + 'px';
+                ballSpeed = orginalSpeed;
             }
 
 	renderer.render(scene, camera);
@@ -326,5 +354,6 @@ var animate = function() {
 animate();		</script>
 	</body>
 </html>
+
 
 
