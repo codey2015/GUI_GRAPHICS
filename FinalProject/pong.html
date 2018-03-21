@@ -59,10 +59,13 @@ bottomBarrier.position.y = -6;
 
             var checkP1 = false;
             var checkP2 = false;
+			var checkTopCol = false;
+			var checkBottomCol = false;
             var startGame = false;
             var startedGame = false;
             var ballSpeed = .1;
-            var ballDirX = 1, ballDirY = 1;
+            var ballDirX = 1
+			var ballDirY = 1;
 var animate = function() {
     requestAnimationFrame(animate);
 
@@ -81,6 +84,9 @@ var animate = function() {
             var bottomCollisionP2 = secondBB.intersectsBox(bottomCol);
             var ballCollisionP1 = firstBB.intersectsBox(ballCol);
             var ballCollisionP2 = secondBB.intersectsBox(ballCol);
+            var topBallCollision = ballCol.intersectsBox(topCol);
+			var bottomBallCollision = ballCol.intersectsBox(bottomCol);
+
 
             if (keyboard.pressed("w")) {
                 player1.position.y += 0.2;
@@ -100,11 +106,6 @@ var animate = function() {
     firstBB.position = player1.position;
     secondBB.position = player2.position;
 	
-	if(collision){
-        //player2.rotation.z +=.4;
-		console.log("Collision detected.");
-    }
-
             if (keyboard.pressed('space') && startedGame == false) {
                 startedGame = true;
                 startGame = true
@@ -132,28 +133,68 @@ var animate = function() {
             }
 
 
-            if (ballCollisionP1) {
+
+            if (ballCollisionP1) { //if the ball hit player 1
                 checkP1 = true;
                 checkP2 = false;
                 startGame = false;
+				checkTopCol = false;
+				checkBottomCol = false;
+				ballSpeed+=.015;
+				ballDirY = Math.random();//random direction each time
+            }
+			
+            if (checkP1 == true) { //while the ball is being hit by player 1
+                ball.position.x += ballSpeed * ballDirX; //send in positive x direction
+				if(checkTopCol == false && checkBottomCol == false){ //if it didn't hit the top
+					//checkTopCol = false;
+					console.log("Player 1 hit");
+					ball.position.y += ballSpeed * ballDirY ; //send in positive y direction
+					
+				}
             }
 
-            if (checkP1 == true) {
-                ball.position.x += ballSpeed * ballDirX;
-            }
-
-            if (ballCollisionP2) {
+            if (ballCollisionP2) { //if the ball hit player 2
                 checkP2 = true;
                 checkP1 = false;
+				checkTopCol = false;
+				checkBottomCol = false;
+				ballDirY = Math.random();//random direction each time
             }
 
-            if (checkP2 == true) {
+            if (checkP2 == true) { //while the ball is being hit by player 2
                 ball.position.x -= ballSpeed;
+				if(checkBottomCol == false && checkTopCol == false ){
+					ball.position.y -= ballSpeed * ballDirY ; //send in positive y direction
+					console.log("Player 2 hit");
+
+				}
+				
             }
 
+			if(topBallCollision){ //if the ball hit the top
+				//ballDirY = Math.random();
+				checkTopCol = true;
+				checkBottomCol = false;
+			}
+			if(checkTopCol == true){
+				ball.position.y -= ballSpeed * ballDirY ; //send ball off wall
+			}
+			
+			if(bottomBallCollision){ //if the ball hit the bottom
+				//ballDirY = Math.random();
+				checkBottomCol = true;
+				checkTopCol = false;
+
+			}
+			if(checkBottomCol == true){
+				ball.position.y += ballSpeed * ballDirY ; //send ball off wall
+			}
+			
 	renderer.render(scene, camera);
 };
  
 animate();		</script>
 	</body>
 </html>
+
