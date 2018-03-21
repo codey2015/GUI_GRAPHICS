@@ -32,34 +32,123 @@ var geometry = new THREE.BoxGeometry(.5, 1.75, .5);
 var material = new THREE.MeshBasicMaterial({ color: 0xbe2626});
 var geometry2 = new THREE.BoxGeometry(.5, 1.75, .5);
 var material2 = new THREE.MeshBasicMaterial({ color: 0x2f9acf });
-var geometry3 = new THREE.BoxGeometry(25, 1, 1);
-var material3 = new THREE.MeshBasicMaterial({ color: 0x932f7b }); 
+            var geometry3 = new THREE.BoxGeometry(25, 1, 1);
+            var material3 = new THREE.MeshBasicMaterial({ color: 0x932f7b }); 
+            var geometry4 = new THREE.BoxGeometry(.2, 10, .2);
+            var material4 = new THREE.MeshBasicMaterial({ color: 0xcacccd }); 
 var player1 = new THREE.Mesh(geometry, material);
-var player2 = new THREE.Mesh(geometry2, material2);;
-var topBarrier = new THREE.Mesh(geometry3, material3);;
-var bottomBarrier = new THREE.Mesh(geometry3, material3);;
+var player2 = new THREE.Mesh(geometry2, material2);
+var topBarrier = new THREE.Mesh(geometry3, material3);
+var bottomBarrier = new THREE.Mesh(geometry3, material3);
+            var leftGoal = new THREE.Mesh(geometry4, material4);
+            var rightGoal = new THREE.Mesh(geometry4, material4);
 scene.add(player1);
 scene.add(player2);
-scene.add(topBarrier);
-scene.add(bottomBarrier);
+            scene.add(topBarrier);
+            scene.add(bottomBarrier);
+            scene.add(leftGoal);
+            scene.add(rightGoal);
 var geometryBall = new THREE.SphereGeometry(.2, 7, 7);
 var material = new THREE.MeshBasicMaterial({ color: 0xcacccd });
 var ball = new THREE.Mesh(geometryBall, material);
 scene.add(ball);
+
+
+
+            var backgroundMiddle = new THREE.BoxGeometry(.35, 1.5, .5);
+            var material22 = new THREE.MeshBasicMaterial({ color: 0x6a6b6b });
+            var BGM = new THREE.Mesh(backgroundMiddle, material22);
+            scene.add(BGM);
+            BGM.position.z = -10;
+            BGM.position.y = 2;
+            var BGM2 = BGM.clone();
+            scene.add(BGM2);
+            BGM2.position.y = -2;
+            var BGM3 = BGM.clone();
+            scene.add(BGM3);
+            BGM3.position.y = 6;
+            var BGM4 = BGM.clone();
+            scene.add(BGM4);
+            BGM4.position.y = -6;
+            var BGM5 = BGM.clone();
+            scene.add(BGM5);
+            BGM5.position.y = 10;
+            var BGM6 = BGM.clone();
+            scene.add(BGM6);
+            BGM6.position.y = -10;
+            var BGM7 = BGM.clone();
+            scene.add(BGM7);
+            BGM7.position.y = 14;
+            var BGM8 = BGM.clone();
+            scene.add(BGM8);
+            BGM8.position.y = -14;
+
+
+
 var text2 = document.createElement('div');
 text2.style.position = 'absolute';
 //text2.style.zIndex = 1;
 text2.style.width = 100;
 text2.style.height = 100;
 text2.style.color = "white";
+text2.style.fontSize = "large";
 text2.innerHTML = "Press Space to start!";
-text2.style.top = 200 + 'px';
+text2.style.top = 230 + 'px';
 text2.style.left = (WIDTH/2.15) + 'px';
-document.body.appendChild(text2);
+            document.body.appendChild(text2);
+
+
+
+var score = document.createElement('div');
+            score.style.position = 'absolute';
+//score.style.zIndex = 1;
+            score.style.width = 200;
+            score.style.height = 200;
+            score.style.color = "white";
+            score.style.fontSize = "xx-large";
+            score.innerHTML = "Score: ";
+            score.style.top = 5 + 'px';
+            score.style.left = (WIDTH / 2.1) + 'px';
+            document.body.appendChild(score);
+
+
+var P1Score = 0;
+var P2Score = 0;
+
+var player1score = document.createElement('div');
+player1score.style.position = 'absolute';
+//player1score.style.zIndex = 1;
+player1score.style.width = 200;
+player1score.style.height = 200;
+player1score.style.color = "white";
+player1score.style.fontSize = "x-large";
+player1score.innerHTML = P1Score;
+player1score.style.top = 40 + 'px';
+player1score.style.left = (WIDTH / 2.1) + 'px';
+document.body.appendChild(player1score);
+
+
+
+
+
+            var player2score = document.createElement('div');
+            player2score.style.position = 'absolute';
+            //player1score.style.zIndex = 1;
+            player2score.style.width = 200;
+            player2score.style.height = 200;
+            player2score.style.color = "white";
+            player2score.style.fontSize = "x-large";
+            player2score.innerHTML = P2Score;
+            player2score.style.top = 40 + 'px';
+            player2score.style.left = (WIDTH / 1.95) + 'px';
+            document.body.appendChild(player2score);
+
 player1.position.x = -10;
 player2.position.x = 10;
 topBarrier.position.y = 6;
 bottomBarrier.position.y = -6;
+leftGoal.position.x = -12;
+rightGoal.position.x = 12;
             var checkP1 = false;
             var checkP2 = false;
 			var checkTopCol = false;
@@ -69,8 +158,9 @@ bottomBarrier.position.y = -6;
             var ballSpeed = .1;
             var ballDirX = 1
 			var ballDirY = 1;
-			
-			var difficulty = 1;
+            var difficulty = 1;
+
+
 var animate = function() {
     requestAnimationFrame(animate);
     firstBB = new THREE.Box3().setFromObject(player1);
@@ -78,6 +168,8 @@ var animate = function() {
     topCol = new THREE.Box3().setFromObject(topBarrier);
     bottomCol = new THREE.Box3().setFromObject(bottomBarrier);
     ballCol = new THREE.Box3().setFromObject(ball);
+    lftGoalCol = new THREE.Box3().setFromObject(leftGoal);
+    rgtGoalCol = new THREE.Box3().setFromObject(rightGoal);
     
             var collision = firstBB.intersectsBox(secondBB);
             var topCollisionP1 = firstBB.intersectsBox(topCol);
@@ -87,7 +179,12 @@ var animate = function() {
             var ballCollisionP1 = firstBB.intersectsBox(ballCol);
             var ballCollisionP2 = secondBB.intersectsBox(ballCol);
             var topBallCollision = ballCol.intersectsBox(topCol);
-			var bottomBallCollision = ballCol.intersectsBox(bottomCol);
+            var bottomBallCollision = ballCol.intersectsBox(bottomCol);
+            var leftGoalCollision = ballCol.intersectsBox(lftGoalCol);
+            var rightGoalCollision = ballCol.intersectsBox(rgtGoalCol);
+
+
+
 			if(keyboard.pressed("r")){
 			ball.position.x = 0;
 			ball.position.y = 0;
@@ -99,6 +196,8 @@ var animate = function() {
 			
             if (keyboard.pressed("w")) {
                 player1.position.y += 0.2 * difficulty;
+                //P1Score += 1;
+                //player1score.innerHTML = P1Score;// Just for testing
             }
             if (keyboard.pressed("s")) {
                 player1.position.y -= 0.2* difficulty;
@@ -186,11 +285,46 @@ var animate = function() {
 			if(checkBottomCol == true){
 				ball.position.y += ballSpeed * ballDirY * difficulty; //send ball off wall
 			}
-			
+
+
+            if (leftGoalCollision) {
+                P2Score += 1;
+                ball.position.x = 0;
+                ball.position.y = 0;
+                startGame = false;
+                startedGame = false;
+                checkP1 = false;
+                checkP2 = false;
+                checkTopCol = false;
+                checkBottomCol = false;
+                player2score.innerHTML = P2Score;
+                text2.innerHTML = "Press Space";
+                text2.style.left = (WIDTH / 2.1) + 'px';
+
+            }
+
+
+            if (rightGoalCollision) {
+                P1Score += 1;
+                ball.position.x = 0;
+                ball.position.y = 0;
+                startGame = false;
+                startedGame = false;
+                checkP1 = false;
+                checkP2 = false;
+                checkTopCol = false;
+                checkBottomCol = false;
+                player1score.innerHTML = P1Score;
+                text2.innerHTML = "Press Space";
+                text2.style.left = (WIDTH / 2.1) + 'px';
+
+            }
+
 	renderer.render(scene, camera);
 };
  
 animate();		</script>
 	</body>
 </html>
+
 
