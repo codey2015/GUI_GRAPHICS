@@ -28,9 +28,9 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(WIDTH, HEIGHT);
 document.body.appendChild(renderer.domElement);
  
-var geometry = new THREE.BoxGeometry(1, 1, 1);
+var geometry = new THREE.BoxGeometry(.5, 1.75, .5);
 var material = new THREE.MeshBasicMaterial({ color: 0xbe2626});
-var geometry2 = new THREE.BoxGeometry(1, 1, 1);
+var geometry2 = new THREE.BoxGeometry(.5, 1.75, .5);
 var material2 = new THREE.MeshBasicMaterial({ color: 0x2f9acf });
 var geometry3 = new THREE.BoxGeometry(25, 1, 1);
 var material3 = new THREE.MeshBasicMaterial({ color: 0x932f7b }); 
@@ -88,6 +88,12 @@ var animate = function() {
 			var bottomBallCollision = ballCol.intersectsBox(bottomCol);
 
 
+			if(keyboard.pressed("r")){
+			ball.position.x = 0;
+			ball.position.y = 0;
+			ballSpeed = .15;
+			}
+			
             if (keyboard.pressed("w")) {
                 player1.position.y += 0.2;
             }
@@ -197,4 +203,5 @@ var animate = function() {
 animate();		</script>
 	</body>
 </html>
+
 
