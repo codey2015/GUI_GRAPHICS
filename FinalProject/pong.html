@@ -66,6 +66,8 @@ bottomBarrier.position.y = -6;
             var ballSpeed = .1;
             var ballDirX = 1
 			var ballDirY = 1;
+			
+			var difficulty = 1;
 var animate = function() {
     requestAnimationFrame(animate);
 
@@ -93,21 +95,24 @@ var animate = function() {
 			ball.position.y = 0;
 			ballSpeed = .15;
 			}
+			if(keyboard.pressed("h")){ // add difficulty
+				difficulty +=.05;
+			}
 			
             if (keyboard.pressed("w")) {
-                player1.position.y += 0.2;
+                player1.position.y += 0.2 * difficulty;
             }
 
             if (keyboard.pressed("s")) {
-                player1.position.y -= 0.2;
+                player1.position.y -= 0.2* difficulty;
             }
 
             if (keyboard.pressed('down')) {
-                player2.position.y -= 0.2;
+                player2.position.y -= 0.2 * difficulty;
             }
 
             if (keyboard.pressed('up')) {
-                player2.position.y += 0.2;
+                player2.position.y += 0.2 * difficulty;
             }
     firstBB.position = player1.position;
     secondBB.position = player2.position;
@@ -126,16 +131,16 @@ var animate = function() {
             }
 
             if (topCollisionP1) {
-                player1.position.y -= .2;
+                player1.position.y -= .2 * difficulty;
             }
             if (topCollisionP2) {
-                player2.position.y -= .2;
+                player2.position.y -= .2 * difficulty;
             }
             if (bottomCollisionP1) {
-                player1.position.y += .2;
+                player1.position.y += .2 * difficulty;
             }
             if (bottomCollisionP2) {
-                player2.position.y += .2;
+                player2.position.y += .2 * difficulty;
             }
 
 
@@ -147,11 +152,11 @@ var animate = function() {
 				checkTopCol = false;
 				checkBottomCol = false;
 				ballSpeed+=.015;
-				ballDirY = Math.random();//random direction each time
+				ballDirY = Math.random() * difficulty;//random direction each time
             }
 			
             if (checkP1 == true) { //while the ball is being hit by player 1
-                ball.position.x += ballSpeed * ballDirX; //send in positive x direction
+                ball.position.x += ballSpeed * ballDirX * difficulty; //send in positive x direction
 				if(checkTopCol == false && checkBottomCol == false){ //if it didn't hit the top
 					//checkTopCol = false;
 					console.log("Player 1 hit");
@@ -165,11 +170,11 @@ var animate = function() {
                 checkP1 = false;
 				checkTopCol = false;
 				checkBottomCol = false;
-				ballDirY = Math.random();//random direction each time
+				ballDirY = Math.random() *difficulty;//random direction each time
             }
 
             if (checkP2 == true) { //while the ball is being hit by player 2
-                ball.position.x -= ballSpeed;
+                ball.position.x -= ballSpeed * ballDirX *difficulty;
 				if(checkBottomCol == false && checkTopCol == false ){
 					ball.position.y -= ballSpeed * ballDirY ; //send in positive y direction
 					console.log("Player 2 hit");
@@ -184,7 +189,7 @@ var animate = function() {
 				checkBottomCol = false;
 			}
 			if(checkTopCol == true){
-				ball.position.y -= ballSpeed * ballDirY ; //send ball off wall
+				ball.position.y -= ballSpeed * ballDirY *difficulty; //send ball off wall
 			}
 			
 			if(bottomBallCollision){ //if the ball hit the bottom
@@ -194,7 +199,7 @@ var animate = function() {
 
 			}
 			if(checkBottomCol == true){
-				ball.position.y += ballSpeed * ballDirY ; //send ball off wall
+				ball.position.y += ballSpeed * ballDirY * difficulty; //send ball off wall
 			}
 			
 	renderer.render(scene, camera);
@@ -203,5 +208,4 @@ var animate = function() {
 animate();		</script>
 	</body>
 </html>
-
 
