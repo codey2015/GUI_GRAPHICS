@@ -44,7 +44,16 @@ var player1_4 = new THREE.Mesh(geometry, material);
 var player1_5 = new THREE.Mesh(geometry, material);
 var player1_6 = new THREE.Mesh(geometry, material);
 var player1_7 = new THREE.Mesh(geometry, material);
+
 var player2 = new THREE.Mesh(geometry2, material2);
+var player2_1 = new THREE.Mesh(geometry, material2);
+var player2_2 = new THREE.Mesh(geometry, material2);
+var player2_3 = new THREE.Mesh(geometry, material2);
+var player2_4 = new THREE.Mesh(geometry, material2);
+var player2_5 = new THREE.Mesh(geometry, material2);
+var player2_6 = new THREE.Mesh(geometry, material2);
+var player2_7 = new THREE.Mesh(geometry, material2);
+
 var topBarrier = new THREE.Mesh(geometry3, material3);
 var bottomBarrier = new THREE.Mesh(geometry3, material3);
             var leftGoal = new THREE.Mesh(geometry4, material4);
@@ -57,7 +66,16 @@ scene.add(player1_4);
 scene.add(player1_5);
 scene.add(player1_6);
 scene.add(player1_7);
+
 scene.add(player2);
+scene.add(player2_1);
+scene.add(player2_2);
+scene.add(player2_3);
+scene.add(player2_4);
+scene.add(player2_5);
+scene.add(player2_6);
+scene.add(player2_7);
+
             scene.add(topBarrier);
             scene.add(bottomBarrier);
             scene.add(leftGoal);
@@ -109,9 +127,18 @@ text2.style.fontSize = "large";
 text2.innerHTML = "Press Space to start!";
 text2.style.top = 230 + 'px';
 text2.style.left = (WIDTH/2.15) + 'px';
-            document.body.appendChild(text2);
+document.body.appendChild(text2);
 
-
+ var text3 = document.createElement('div');
+ text3.style.position = 'absolute';
+ text3.style.width = 100;
+ text3.style.height = 100;
+ text3.style.color = "white";
+ text3.style.fontSize = "large";
+ text3.innerHTML =  "Press B to activate Special Mode!";
+ text3.style.top = 620 + 'px';
+ text3.style.left = (WIDTH / 2.25) + 'px';
+ document.body.appendChild(text3);
 
 var score = document.createElement('div');
             score.style.position = 'absolute';
@@ -158,26 +185,19 @@ document.body.appendChild(player1score);
             document.body.appendChild(player2score);
 
 player1.position.x = -10;
-player1_1.position.x = -10;
-player1_1.position.y = 1;
-player1_2.position.x = -10;
-player1_2.position.y = 0.75;
-player1_3.position.x = -10;
-player1_3.position.y = .5;
-player1_4.position.x = -10;
-player1_4.position.y = .25;
-player1_5.position.x = -10;
-player1_5.position.y = 0;
-player1_6.position.x = -10;
-player1_6.position.y = -.25;
-player1_7.position.x = -10;
-player1_7.position.y = -.5;
 player2.position.x = 10;
 topBarrier.position.y = 6;
 bottomBarrier.position.y = -6;
 leftGoal.position.x = -12;
 rightGoal.position.x = 12;
             var checkP1 = false;
+            var checkP1_1 = false;
+            var checkP1_2 = false;
+            var checkP1_3 = false;
+            var checkP1_4 = false;
+            var checkP1_5 = false;
+            var checkP1_6 = false;
+            var checkP1_7 = false;
             var checkP2 = false;
 			var checkTopCol = false;
 			var checkBottomCol = false;
@@ -186,6 +206,7 @@ rightGoal.position.x = 12;
             var p1Lose = false;
             var p2Lose = false;
             var firstStart = true;
+            var specialMode = false;
             var ballSpeed = .1;
             var ballDirX = 1
 			var ballDirY = 1;
@@ -203,7 +224,6 @@ var animate = function() {
     lftGoalCol = new THREE.Box3().setFromObject(leftGoal);
     rgtGoalCol = new THREE.Box3().setFromObject(rightGoal);
     
-            var collision = firstBB.intersectsBox(secondBB);
             var topCollisionP1 = firstBB.intersectsBox(topCol);
             var topCollisionP2 = secondBB.intersectsBox(topCol);
             var bottomCollisionP1 = firstBB.intersectsBox(bottomCol);
@@ -216,37 +236,89 @@ var animate = function() {
             var rightGoalCollision = ballCol.intersectsBox(rgtGoalCol);
 
 
+            player1_1.position.y = player1.position.y + .75;
+            player1_2.position.y = player1.position.y + .5;
+            player1_3.position.y = player1.position.y + .25;//mid
+            player1_4.position.y = player1.position.y ;//mid
+            player1_5.position.y = player1.position.y  -.25;//mid
+            player1_6.position.y = player1.position.y - .5;
+            player1_7.position.y = player1.position.y - .75;
+
+            player1_1.position.x = player1.position.x;
+            player1_2.position.x = player1.position.x;
+            player1_3.position.x = player1.position.x;
+            player1_4.position.x = player1.position.x;
+            player1_5.position.x = player1.position.x;
+            player1_6.position.x = player1.position.x;
+            player1_7.position.x = player1.position.x;
+    
+
+            player2_1.position.y = player2.position.y + .75;
+            player2_2.position.y = player2.position.y + .5;
+            player2_3.position.y = player2.position.y + .25;
+            player2_4.position.y = player2.position.y ;
+            player2_5.position.y = player2.position.y  -.25;
+            player2_6.position.y = player2.position.y - .5;
+            player2_7.position.y = player2.position.y - .75;
+                                         
+            player2_1.position.x = player2.position.x;
+            player2_2.position.x = player2.position.x;
+            player2_3.position.x = player2.position.x;
+            player2_4.position.x = player2.position.x;
+            player2_5.position.x = player2.position.x;
+            player2_6.position.x = player2.position.x;
+            player2_7.position.x = player2.position.x;
+
+                firstBB_1 = new THREE.Box3().setFromObject(player1_1);
+                var ballCollisionP1_1 = firstBB_1.intersectsBox(ballCol);
+                firstBB_2 = new THREE.Box3().setFromObject(player1_2);
+                var ballCollisionP1_2 = firstBB_2.intersectsBox(ballCol);
+                firstBB_3 = new THREE.Box3().setFromObject(player1_3);
+                var ballCollisionP1_3 = firstBB_3.intersectsBox(ballCol);
+                firstBB_4 = new THREE.Box3().setFromObject(player1_4);
+                var ballCollisionP1_4 = firstBB_4.intersectsBox(ballCol);
+                firstBB_5 = new THREE.Box3().setFromObject(player1_5);
+                var ballCollisionP1_5 = firstBB_5.intersectsBox(ballCol);
+                firstBB_6 = new THREE.Box3().setFromObject(player1_6);
+                var ballCollisionP1_6 = firstBB_6.intersectsBox(ballCol);
+                firstBB_7 = new THREE.Box3().setFromObject(player1_7);
+                var ballCollisionP1_7 = firstBB_7.intersectsBox(ballCol);
+
+    
+                secondBB_1 = new THREE.Box3().setFromObject(player2_1);
+                var ballCollisionP2_1 = secondBB_1.intersectsBox(ballCol);
+                secondBB_2 = new THREE.Box3().setFromObject(player2_2);
+                var ballCollisionP2_2 = secondBB_2.intersectsBox(ballCol);
+                secondBB_3 = new THREE.Box3().setFromObject(player2_3);
+                var ballCollisionP2_3 = secondBB_3.intersectsBox(ballCol);
+                secondBB_4 = new THREE.Box3().setFromObject(player2_4);
+                var ballCollisionP2_4 = secondBB_4.intersectsBox(ballCol);
+                secondBB_5 = new THREE.Box3().setFromObject(player2_5);
+                var ballCollisionP2_5 = secondBB_5.intersectsBox(ballCol);
+                secondBB_6 = new THREE.Box3().setFromObject(player2_6);
+                var ballCollisionP2_6 = secondBB_6.intersectsBox(ballCol);
+                secondBB_7 = new THREE.Box3().setFromObject(player2_7);
+                var ballCollisionP2_7 = secondBB_7.intersectsBox(ballCol);
 
 			if(keyboard.pressed("r")){
-			ball.position.x = 0;
-			ball.position.y = 0;
-			ballSpeed = orginalSpeed;
+			//ball.position.x = 0;
+			//ball.position.y = 0;
+			//ballSpeed = orginalSpeed;
 			}
 			if(keyboard.pressed("h")){ // add difficulty
 				difficulty +=.05;
-			}
-			
+            }
+
+            if (keyboard.pressed("b")) { // add special mode
+                    specialMode = true;     
+            }
+
+
             if (keyboard.pressed("w")) {
                 player1.position.y += 0.2 * difficulty;
-                player1_1.position.y += 0.2 * difficulty;
-                player1_2.position.y += 0.2 * difficulty;
-                player1_3.position.y += 0.2 * difficulty;
-                player1_4.position.y += 0.2 * difficulty;
-                player1_5.position.y += 0.2 * difficulty;
-                player1_6.position.y += 0.2 * difficulty;
-                player1_7.position.y += 0.2 * difficulty;
-                //P1Score += 1;
-                //player1score.innerHTML = P1Score;// Just for testing
             }
             if (keyboard.pressed("s")) {
                 player1.position.y -= 0.2* difficulty;
-				player1_1.position.y -= 0.2 * difficulty;
-                player1_2.position.y -= 0.2 * difficulty;
-                player1_3.position.y -= 0.2 * difficulty;
-                player1_4.position.y -= 0.2 * difficulty;
-                player1_5.position.y -= 0.2 * difficulty;
-                player1_6.position.y -= 0.2 * difficulty;
-                player1_7.position.y -= 0.2 * difficulty;
             }
 
             if (keyboard.pressed('down')) {
@@ -255,29 +327,33 @@ var animate = function() {
             if (keyboard.pressed('up')) {
                 player2.position.y += 0.2 * difficulty;
             }
-			/*
-			if (keyboard.pressed("d")) {
-                player1.position.x += 0.2* difficulty;
+
+            if (specialMode == true && startedGame == true) {
+                
+                if (keyboard.pressed("d")) {
+                    player1.position.x += 0.2* difficulty;
+                }
+            	
+                if (keyboard.pressed("a")) {
+                    player1.position.x -= 0.2* difficulty;
+                }
+            	
+                if (keyboard.pressed('left')) {
+                    player2.position.x -= 0.2 * difficulty;
+                }
+                if (keyboard.pressed('right')) {
+                    player2.position.x += 0.2 * difficulty;
+                }
+                
             }
-			
-			if (keyboard.pressed("a")) {
-                player1.position.x -= 0.2* difficulty;
-            }
-			
-			if (keyboard.pressed('left')) {
-                player2.position.x -= 0.2 * difficulty;
-            }
-			if (keyboard.pressed('right')) {
-                player2.position.x += 0.2 * difficulty;
-            }
-			*/
     firstBB.position = player1.position;
     secondBB.position = player2.position;
 	
             if (keyboard.pressed('space') && startedGame == false) {
                 startedGame = true;
                 startGame = true
-				text2.innerHTML = "";
+                text2.innerHTML = "";
+                text3.innerHTML = "";
             }
             if (startGame == true) {
                 if (p1Lose == true) {
@@ -302,26 +378,12 @@ var animate = function() {
             }
             if (topCollisionP1) {
                 player1.position.y -= .2 * difficulty;
-				player1_1.position.y -= 0.2 * difficulty;
-                player1_2.position.y -= 0.2 * difficulty;
-                player1_3.position.y -= 0.2 * difficulty;
-                player1_4.position.y -= 0.2 * difficulty;
-                player1_5.position.y -= 0.2 * difficulty;
-                player1_6.position.y -= 0.2 * difficulty;
-                player1_7.position.y -= 0.2 * difficulty;
             }
             if (topCollisionP2) {
                 player2.position.y -= .2 * difficulty;
             }
             if (bottomCollisionP1) {
                 player1.position.y += .2 * difficulty;
-				player1_1.position.y += 0.2 * difficulty;
-                player1_2.position.y += 0.2 * difficulty;
-                player1_3.position.y += 0.2 * difficulty;
-                player1_4.position.y += 0.2 * difficulty;
-                player1_5.position.y += 0.2 * difficulty;
-                player1_6.position.y += 0.2 * difficulty;
-                player1_7.position.y += 0.2 * difficulty;
             }
             if (bottomCollisionP2) {
                 player2.position.y += .2 * difficulty;
@@ -386,7 +448,7 @@ var animate = function() {
 			}
 
 
-            if (leftGoalCollision) {
+            if (leftGoalCollision || ball.position.x < -25) {
                 P2Score += 1;
                 ball.position.x = 0;
                 ball.position.y = 0;
@@ -404,7 +466,7 @@ var animate = function() {
             }
 
 
-            if (rightGoalCollision) {
+            if (rightGoalCollision || ball.position.x > 25) {
                 P1Score += 1;
                 ball.position.x = 0;
                 ball.position.y = 0;
@@ -421,17 +483,52 @@ var animate = function() {
                 ballSpeed = orginalSpeed;
             }
 
+
+
+            if (player1.position.x >= -.5) {
+                player1.position.x -= 0.2 * difficulty;
+            }
+            if (player2.position.x <= .5) {
+                player2.position.x += 0.2 * difficulty;
+            }
+            if (player1.position.x <= leftGoal.position.x) {
+                player1.position.x += 0.2 * difficulty;
+            }
+            if (player2.position.x >= rightGoal.position.x) {
+                player2.position.x -= 0.2 * difficulty;
+            }
+
+            if (ballCollisionP1_1) {
+                console.log("Test1")
+            }
+					
+				
+
+                if (ballCollisionP1_2) {
+                    console.log("Test2")
+                }
+                if (ballCollisionP1_3) {
+                    console.log("Test3")
+                }
+                if (ballCollisionP1_4) {
+                    console.log("Test4")
+                }
+                if (ballCollisionP1_5) {
+                    console.log("Test5")
+                }
+                if (ballCollisionP1_6) {
+                    console.log("Test6")
+                }
+                if (ballCollisionP1_7) {
+                    console.log("Test7")
+                }
+
+           
+            
 	renderer.render(scene, camera);
 };
  
 animate();		</script>
 	</body>
 </html>
-
-
-
-
-
-
-
 
