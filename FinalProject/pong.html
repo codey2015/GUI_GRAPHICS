@@ -28,7 +28,7 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(WIDTH, HEIGHT);
 document.body.appendChild(renderer.domElement);
  
-var geometry = new THREE.BoxGeometry(.5, 1.75, .5);
+var geometry = new THREE.BoxGeometry(.5, .25, .5);
 var material = new THREE.MeshBasicMaterial({ color: 0xbe2626});
 var geometry2 = new THREE.BoxGeometry(.5, 1.75, .5);
 var material2 = new THREE.MeshBasicMaterial({ color: 0x2f9acf });
@@ -36,13 +36,27 @@ var material2 = new THREE.MeshBasicMaterial({ color: 0x2f9acf });
             var material3 = new THREE.MeshBasicMaterial({ color: 0x932f7b }); 
             var geometry4 = new THREE.BoxGeometry(.2, 10.10, .2);
             var material4 = new THREE.MeshBasicMaterial({ color: 0xcacccd }); 
-var player1 = new THREE.Mesh(geometry, material);
+var player1 = new THREE.Mesh(geometry2, material);
+var player1_1 = new THREE.Mesh(geometry, material);
+var player1_2 = new THREE.Mesh(geometry, material);
+var player1_3 = new THREE.Mesh(geometry, material);
+var player1_4 = new THREE.Mesh(geometry, material);
+var player1_5 = new THREE.Mesh(geometry, material);
+var player1_6 = new THREE.Mesh(geometry, material);
+var player1_7 = new THREE.Mesh(geometry, material);
 var player2 = new THREE.Mesh(geometry2, material2);
 var topBarrier = new THREE.Mesh(geometry3, material3);
 var bottomBarrier = new THREE.Mesh(geometry3, material3);
             var leftGoal = new THREE.Mesh(geometry4, material4);
             var rightGoal = new THREE.Mesh(geometry4, material4);
 scene.add(player1);
+scene.add(player1_1);
+scene.add(player1_2);
+scene.add(player1_3);
+scene.add(player1_4);
+scene.add(player1_5);
+scene.add(player1_6);
+scene.add(player1_7);
 scene.add(player2);
             scene.add(topBarrier);
             scene.add(bottomBarrier);
@@ -144,6 +158,20 @@ document.body.appendChild(player1score);
             document.body.appendChild(player2score);
 
 player1.position.x = -10;
+player1_1.position.x = -10;
+player1_1.position.y = 1;
+player1_2.position.x = -10;
+player1_2.position.y = 0.75;
+player1_3.position.x = -10;
+player1_3.position.y = .5;
+player1_4.position.x = -10;
+player1_4.position.y = .25;
+player1_5.position.x = -10;
+player1_5.position.y = 0;
+player1_6.position.x = -10;
+player1_6.position.y = -.25;
+player1_7.position.x = -10;
+player1_7.position.y = -.5;
 player2.position.x = 10;
 topBarrier.position.y = 6;
 bottomBarrier.position.y = -6;
@@ -200,18 +228,49 @@ var animate = function() {
 			
             if (keyboard.pressed("w")) {
                 player1.position.y += 0.2 * difficulty;
+                player1_1.position.y += 0.2 * difficulty;
+                player1_2.position.y += 0.2 * difficulty;
+                player1_3.position.y += 0.2 * difficulty;
+                player1_4.position.y += 0.2 * difficulty;
+                player1_5.position.y += 0.2 * difficulty;
+                player1_6.position.y += 0.2 * difficulty;
+                player1_7.position.y += 0.2 * difficulty;
                 //P1Score += 1;
                 //player1score.innerHTML = P1Score;// Just for testing
             }
             if (keyboard.pressed("s")) {
                 player1.position.y -= 0.2* difficulty;
+				player1_1.position.y -= 0.2 * difficulty;
+                player1_2.position.y -= 0.2 * difficulty;
+                player1_3.position.y -= 0.2 * difficulty;
+                player1_4.position.y -= 0.2 * difficulty;
+                player1_5.position.y -= 0.2 * difficulty;
+                player1_6.position.y -= 0.2 * difficulty;
+                player1_7.position.y -= 0.2 * difficulty;
             }
+
             if (keyboard.pressed('down')) {
                 player2.position.y -= 0.2 * difficulty;
             }
             if (keyboard.pressed('up')) {
                 player2.position.y += 0.2 * difficulty;
             }
+			/*
+			if (keyboard.pressed("d")) {
+                player1.position.x += 0.2* difficulty;
+            }
+			
+			if (keyboard.pressed("a")) {
+                player1.position.x -= 0.2* difficulty;
+            }
+			
+			if (keyboard.pressed('left')) {
+                player2.position.x -= 0.2 * difficulty;
+            }
+			if (keyboard.pressed('right')) {
+                player2.position.x += 0.2 * difficulty;
+            }
+			*/
     firstBB.position = player1.position;
     secondBB.position = player2.position;
 	
@@ -354,6 +413,8 @@ var animate = function() {
 animate();		</script>
 	</body>
 </html>
+
+
 
 
 
