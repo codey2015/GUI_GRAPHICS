@@ -299,7 +299,7 @@ var animate = function() {
 			if(keyboard.pressed("h")){ // add difficulty
 				difficulty +=.05;
             }
-            if (keyboard.pressed("b")) { // add special mode
+            if (keyboard.pressed("b")&& startGame == false) { // add special mode
                     specialMode = true;
 					text3.style.textAlign = 'center';
 					text3.innerHTML = "Special mode activated!<br>Press Z to deactivate Special mode!";
@@ -308,7 +308,7 @@ var animate = function() {
 					text5.innerHTML = "↑<br>←  →<br> ↓"
             }
 			
-			if(keyboard.pressed("z")){
+			if(keyboard.pressed("z") && startGame == false){
 						specialMode = false;
 						text3.style.textAlign = 'center';
 						text3.innerHTML =  "Press B to activate Special Mode!";
