@@ -44,7 +44,6 @@ var player1_4 = new THREE.Mesh(geometry, material);
 var player1_5 = new THREE.Mesh(geometry, material);
 var player1_6 = new THREE.Mesh(geometry, material);
 var player1_7 = new THREE.Mesh(geometry, material);
-
 var player2 = new THREE.Mesh(geometry2, material2);
 var player2_1 = new THREE.Mesh(geometry, material2);
 var player2_2 = new THREE.Mesh(geometry, material2);
@@ -53,7 +52,6 @@ var player2_4 = new THREE.Mesh(geometry, material2);
 var player2_5 = new THREE.Mesh(geometry, material2);
 var player2_6 = new THREE.Mesh(geometry, material2);
 var player2_7 = new THREE.Mesh(geometry, material2);
-
 var topBarrier = new THREE.Mesh(geometry3, material3);
 var bottomBarrier = new THREE.Mesh(geometry3, material3);
             var leftGoal = new THREE.Mesh(geometry4, material4);
@@ -66,7 +64,6 @@ scene.add(player1_4);
 scene.add(player1_5);
 scene.add(player1_6);
 scene.add(player1_7);
-
 scene.add(player2);
 scene.add(player2_1);
 scene.add(player2_2);
@@ -75,7 +72,6 @@ scene.add(player2_4);
 scene.add(player2_5);
 scene.add(player2_6);
 scene.add(player2_7);
-
             scene.add(topBarrier);
             scene.add(bottomBarrier);
             scene.add(leftGoal);
@@ -84,9 +80,6 @@ var geometryBall = new THREE.SphereGeometry(.2, 7, 7);
 var material = new THREE.MeshBasicMaterial({ color: 0xcacccd });
 var ball = new THREE.Mesh(geometryBall, material);
 scene.add(ball);
-
-
-
             var backgroundMiddle = new THREE.BoxGeometry(.35, 1.5, .5);
             var material22 = new THREE.MeshBasicMaterial({ color: 0x6a6b6b });
             var BGM = new THREE.Mesh(backgroundMiddle, material22);
@@ -114,9 +107,6 @@ scene.add(ball);
             var BGM8 = BGM.clone();
             scene.add(BGM8);
             BGM8.position.y = -14;
-
-
-
 var text2 = document.createElement('div');
 text2.style.position = 'absolute';
 //text2.style.zIndex = 1;
@@ -128,18 +118,36 @@ text2.innerHTML = "Press Space to start!";
 text2.style.top = 230 + 'px';
 text2.style.left = (WIDTH/2.15) + 'px';
 document.body.appendChild(text2);
-
- var text3 = document.createElement('div');
- text3.style.position = 'absolute';
- text3.style.width = 100;
- text3.style.height = 100;
- text3.style.color = "white";
- text3.style.fontSize = "large";
- text3.innerHTML =  "Press B to activate Special Mode!";
- text3.style.top = 620 + 'px';
- text3.style.left = (WIDTH / 2.25) + 'px';
- document.body.appendChild(text3);
-
+var text3 = document.createElement('div');
+text3.style.position = 'absolute';
+text3.style.width = 100;
+text3.style.height = 100;
+text3.style.color = "white";
+text3.style.fontSize = "large";
+text3.innerHTML =  "Press B to activate Special Mode!";
+text3.style.top = 620 + 'px';
+text3.style.left = (WIDTH / 2.25) + 'px';
+document.body.appendChild(text3);
+var text4 = document.createElement('div');
+text4.style.position = 'absolute';
+text4.style.textAlign = 'center';
+text4.style.width = 100;
+text4.style.color = "white";
+text4.style.fontSize = "large";
+text4.innerHTML = "W <br><br> S";
+text4.style.top = (HEIGHT/2.1) + 'px';
+text4.style.left = (WIDTH / 5.3) + 'px';
+document.body.appendChild(text4);
+var text5 = document.createElement('div');
+text5.style.position = 'absolute';
+text5.style.textAlign = 'center';
+text5.style.width = 100;
+text5.style.color = "white";
+text5.style.fontSize = "large";
+text5.innerHTML = "↑<br><br> ↓";
+text5.style.top = (HEIGHT/2.1) + 'px';
+text5.style.left = (WIDTH / 1.24) + 'px';
+document.body.appendChild(text5);
 var score = document.createElement('div');
             score.style.position = 'absolute';
 //score.style.zIndex = 1;
@@ -151,11 +159,8 @@ var score = document.createElement('div');
             score.style.top = 5 + 'px';
             score.style.left = (WIDTH / 2.1) + 'px';
             document.body.appendChild(score);
-
-
 var P1Score = 0;
 var P2Score = 0;
-
 var player1score = document.createElement('div');
 player1score.style.position = 'absolute';
 //player1score.style.zIndex = 1;
@@ -167,23 +172,17 @@ player1score.innerHTML = P1Score;
 player1score.style.top = 40 + 'px';
 player1score.style.left = (WIDTH / 2.1) + 'px';
 document.body.appendChild(player1score);
-
-
-
-
-
-            var player2score = document.createElement('div');
-            player2score.style.position = 'absolute';
-            //player1score.style.zIndex = 1;
-            player2score.style.width = 200;
-            player2score.style.height = 200;
-            player2score.style.color = "white";
-            player2score.style.fontSize = "x-large";
-            player2score.innerHTML = P2Score;
-            player2score.style.top = 40 + 'px';
-            player2score.style.left = (WIDTH / 1.95) + 'px';
-            document.body.appendChild(player2score);
-
+var player2score = document.createElement('div');
+player2score.style.position = 'absolute';
+//player1score.style.zIndex = 1;
+player2score.style.width = 200;
+player2score.style.height = 200;
+player2score.style.color = "white";
+player2score.style.fontSize = "x-large";
+player2score.innerHTML = P2Score;
+player2score.style.top = 40 + 'px';
+player2score.style.left = (WIDTH / 1.95) + 'px';
+document.body.appendChild(player2score);
 player1.position.x = -10;
 player2.position.x = 10;
 topBarrier.position.y = 6;
@@ -213,7 +212,6 @@ rightGoal.position.x = 12;
             var difficulty = 1;
             var orginalSpeed = ballSpeed + .05;
             var temp = Math.random();
-
 var animate = function() {
     requestAnimationFrame(animate);
     firstBB = new THREE.Box3().setFromObject(player1);
@@ -234,8 +232,6 @@ var animate = function() {
             var bottomBallCollision = ballCol.intersectsBox(bottomCol);
             var leftGoalCollision = ballCol.intersectsBox(lftGoalCol);
             var rightGoalCollision = ballCol.intersectsBox(rgtGoalCol);
-
-
             player1_1.position.y = player1.position.y + .75;
             player1_2.position.y = player1.position.y + .5;
             player1_3.position.y = player1.position.y + .25;//mid
@@ -243,7 +239,6 @@ var animate = function() {
             player1_5.position.y = player1.position.y  -.25;//mid
             player1_6.position.y = player1.position.y - .5;
             player1_7.position.y = player1.position.y - .75;
-
             player1_1.position.x = player1.position.x;
             player1_2.position.x = player1.position.x;
             player1_3.position.x = player1.position.x;
@@ -252,7 +247,6 @@ var animate = function() {
             player1_6.position.x = player1.position.x;
             player1_7.position.x = player1.position.x;
     
-
             player2_1.position.y = player2.position.y + .75;
             player2_2.position.y = player2.position.y + .5;
             player2_3.position.y = player2.position.y + .25;
@@ -268,7 +262,6 @@ var animate = function() {
             player2_5.position.x = player2.position.x;
             player2_6.position.x = player2.position.x;
             player2_7.position.x = player2.position.x;
-
                 firstBB_1 = new THREE.Box3().setFromObject(player1_1);
                 var ballCollisionP1_1 = firstBB_1.intersectsBox(ballCol);
                 firstBB_2 = new THREE.Box3().setFromObject(player1_2);
@@ -283,7 +276,6 @@ var animate = function() {
                 var ballCollisionP1_6 = firstBB_6.intersectsBox(ballCol);
                 firstBB_7 = new THREE.Box3().setFromObject(player1_7);
                 var ballCollisionP1_7 = firstBB_7.intersectsBox(ballCol);
-
     
                 secondBB_1 = new THREE.Box3().setFromObject(player2_1);
                 var ballCollisionP2_1 = secondBB_1.intersectsBox(ballCol);
@@ -299,7 +291,6 @@ var animate = function() {
                 var ballCollisionP2_6 = secondBB_6.intersectsBox(ballCol);
                 secondBB_7 = new THREE.Box3().setFromObject(player2_7);
                 var ballCollisionP2_7 = secondBB_7.intersectsBox(ballCol);
-
 			if(keyboard.pressed("r")){
 			//ball.position.x = 0;
 			//ball.position.y = 0;
@@ -308,26 +299,35 @@ var animate = function() {
 			if(keyboard.pressed("h")){ // add difficulty
 				difficulty +=.05;
             }
-
             if (keyboard.pressed("b")) { // add special mode
-                    specialMode = true;     
+                    specialMode = true;
+					text3.style.textAlign = 'center';
+					text3.innerHTML = "Special mode activated!<br>Press Z to deactivate Special mode!";
+					text3.style.left = (WIDTH / 2.28) + 'px';
+					text4.innerHTML = "W <br>A  D<br> S";
+					text5.innerHTML = "↑<br>←  →<br> ↓"
             }
-
-
+			
+			if(keyboard.pressed("z")){
+						specialMode = false;
+						text3.style.textAlign = 'center';
+						text3.innerHTML =  "Press B to activate Special Mode!";
+						text3.style.left = (WIDTH / 2.25) + 'px';
+						text4.innerHTML = "W <br><br> S";
+						text5.innerHTML = "↑<br><br> ↓"
+			}
             if (keyboard.pressed("w")) {
                 player1.position.y += 0.2 * difficulty;
             }
             if (keyboard.pressed("s")) {
                 player1.position.y -= 0.2* difficulty;
             }
-
             if (keyboard.pressed('down')) {
                 player2.position.y -= 0.2 * difficulty;
             }
             if (keyboard.pressed('up')) {
                 player2.position.y += 0.2 * difficulty;
             }
-
             if (specialMode == true && startedGame == true) {
                 
                 if (keyboard.pressed("d")) {
@@ -354,6 +354,8 @@ var animate = function() {
                 startGame = true
                 text2.innerHTML = "";
                 text3.innerHTML = "";
+				text4.innerHTML = "";
+				text5.innerHTML = "";
             }
             if (startGame == true) {
                 if (p1Lose == true) {
@@ -362,7 +364,6 @@ var animate = function() {
                 if (p2Lose == true) {
                     ball.position.x += .2;
                 }
-
                 if (firstStart == true) {
                     if (temp > 0.5) {
                         ball.position.x += .2;
@@ -371,7 +372,6 @@ var animate = function() {
                         ball.position.x -= .2;
                     }
                 }
-
             }
             if (keyboard.pressed('0')) {
                 ballSpeed = 1.5;
@@ -419,7 +419,6 @@ var animate = function() {
                 p2Lose = false;
                 firstStart = false;
 				ballSpeed+=(.015/ 2);
-
 				ballDirY = Math.random() *difficulty;//random direction each time
             }
             if (checkP2 == true) { //while the ball is being hit by player 2
@@ -447,10 +446,8 @@ var animate = function() {
 			if(checkBottomCol == true){
 				ball.position.y += ballSpeed * ballDirY * difficulty; //send ball off wall
 			}
-
-
             if (leftGoalCollision || ball.position.x < -25) {
-                P2Score += 1;
+				P2Score += 1;
                 ball.position.x = 0;
                 ball.position.y = 0;
                 p1Lose = true;
@@ -462,13 +459,31 @@ var animate = function() {
                 checkBottomCol = false;
                 player2score.innerHTML = P2Score;
                 text2.innerHTML = "Red press Space";
-                //text2.style.left = (WIDTH / 2.1) + 'px';
+                text2.style.left = (WIDTH / 2.13) + 'px';
                 ballSpeed = orginalSpeed;
             }
-
-
+			
+			if(P2Score >= 11){
+					if((P2Score-P1Score) >= 2){
+						console.log("P2Wins");
+						text2.innerHTML = "Blue Wins!";
+						text2.style.left = (WIDTH/2.08) + 'px';
+						text3.innerHTML = "Press Space to start a new game!";
+						if(keyboard.pressed("space")){
+							//P1Score = 0;
+							//P2Score = 0;
+							//player1score.innerHTML = P1Score;
+							//player2score.innerHTML = P2Score;
+							//text2.innerHTML = "";
+							//text3.innerHTML = "";
+							location.reload();
+						}
+						
+					}
+				}
             if (rightGoalCollision || ball.position.x > 25) {
-                P1Score += 1;
+                
+				P1Score += 1;
                 ball.position.x = 0;
                 ball.position.y = 0;
                 p2Lose = true;
@@ -480,12 +495,27 @@ var animate = function() {
                 checkBottomCol = false;
                 player1score.innerHTML = P1Score;
                 text2.innerHTML = "Blue press Space";
-                //text2.style.left = (WIDTH / 2.1) + 'px';
+                text2.style.left = (WIDTH / 2.13) + 'px';
                 ballSpeed = orginalSpeed;
             }
-
-
-
+			
+			if (P1Score >= 11){
+					if((P1Score-P2Score) >= 2){
+						console.log("P1Wins");
+						text2.innerHTML = "Red Wins!";
+						text2.style.left = (WIDTH/2.08) + 'px';
+						text3.innerHTML = "Press Space to start a new game!";
+						if(keyboard.pressed("space")){
+							//P1Score = 0;
+							//P2Score = 0;
+							//player1score.innerHTML = P1Score;
+							//player2score.innerHTML = P2Score;
+							//text2.innerHTML = "";
+							//text3.innerHTML = "";
+							location.reload();
+						} 
+					}
+				}
             if (player1.position.x >= -.5) {
                 player1.position.x -= 0.2 * difficulty;
             }
@@ -498,13 +528,11 @@ var animate = function() {
             if (player2.position.x >= (rightGoal.position.x - .5)) {
                 player2.position.x -= 0.2 * difficulty;
             }
-
             if (ballCollisionP1_1) {
                 console.log("Test1")
             }
 					
 				
-
                 if (ballCollisionP1_2) {
                     console.log("Test2")
                 }
@@ -523,7 +551,6 @@ var animate = function() {
                 if (ballCollisionP1_7) {
                     console.log("Test7")
                 }
-
            
             
 	renderer.render(scene, camera);
@@ -532,4 +559,3 @@ var animate = function() {
 animate();		</script>
 	</body>
 </html>
-
