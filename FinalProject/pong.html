@@ -397,7 +397,7 @@ var animate = function() {
                 p1Lose = false;
                 p2Lose = false;
                 firstStart = false;
-				ballSpeed+=.015;
+				ballSpeed+=(.015/ 2);
 				ballDirY = Math.random() * difficulty;//random direction each time
             }
 			
@@ -418,6 +418,7 @@ var animate = function() {
                 p1Lose = false;
                 p2Lose = false;
                 firstStart = false;
+				ballSpeed+=(.015/ 2);
 
 				ballDirY = Math.random() *difficulty;//random direction each time
             }
@@ -491,10 +492,10 @@ var animate = function() {
             if (player2.position.x <= .5) {
                 player2.position.x += 0.2 * difficulty;
             }
-            if (player1.position.x <= leftGoal.position.x) {
+            if (player1.position.x <= (leftGoal.position.x + .5)) {
                 player1.position.x += 0.2 * difficulty;
             }
-            if (player2.position.x >= rightGoal.position.x) {
+            if (player2.position.x >= (rightGoal.position.x - .5)) {
                 player2.position.x -= 0.2 * difficulty;
             }
 
